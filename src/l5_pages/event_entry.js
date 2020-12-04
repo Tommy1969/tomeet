@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import {LabeledText} from '../l2_ molecules/labeled_text'
 
 const FieldSet = styled.fieldset`
   margin:                 1rem;
@@ -8,22 +9,6 @@ const FieldSet = styled.fieldset`
   grid-template-columns:  1fr;
   grid-row-gap:           1rem;
 `
-
-const Div = styled.div`
-  display:                grid;
-  grid-template-columns:  100px 1fr;
-`
-
-const LabeledText = ({id, label, value, ...props}) =>
-  <Div>
-    <label htmlFor={id}>{label}</label>
-    <input id={id} type="text" value={value} onChange={props.handleChange || (() => {})} />
-  </Div>
-
-LabeledText.propTypes = {
-  id:     PropTypes.string.isRequired,
-  label:  PropTypes.string.isRequired
-}
 
 const Span = styled.span`
   text-align: right;
@@ -37,6 +22,11 @@ const Button = ({label, ...props}) =>
       onClick = {props.handleClick}
       />
   </Span>
+
+Button.propTypes = {
+  label:        PropTypes.string.isRequired,
+  handleClick:  PropTypes.func.isRequired
+}
 
 export const EventEntry = ({id, title, place, ...props}) =>
   <FieldSet>
@@ -54,7 +44,7 @@ export const EventEntry = ({id, title, place, ...props}) =>
       handleChange  = {props.handleChange}
       />
     <Button
-      label       = "保存"
-      handleClick = {props.handleSave}
+      label         = "保存"
+      handleClick   = {props.handleSave}
       />
   </FieldSet>

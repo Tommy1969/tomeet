@@ -1,13 +1,15 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
-import { EventEntry } from './event_entry'
+import {render, screen} from '@testing-library/react'
+import {EventEntry} from './event_entry'
 
 describe('イベント登録フォームが期待通りに動作すること', () => {
   describe('イベント名入力欄が期待通りに動作すること', () => {
     let target = null
     beforeEach(() => {
       render(<EventEntry
-        id = "aaa001"
+        id            = "aaa001"
+        handleChange  = {jest.fn()}
+        handleSave    = {jest.fn()}
       />)
       target = screen.getByLabelText('イベント名')
     })
@@ -23,7 +25,9 @@ describe('イベント登録フォームが期待通りに動作すること', (
     let target = null
     beforeEach(() => {
       render(<EventEntry
-        id = "aaa001"
+        id            = "aaa001"
+        handleChange  = {jest.fn()}
+        handleSave    = {jest.fn()}
       />)
       target = screen.getByLabelText('開催地')
     })
@@ -39,7 +43,9 @@ describe('イベント登録フォームが期待通りに動作すること', (
     let target = null
     beforeEach(() => {
       render(<EventEntry
-        id = "aaa001"
+        id            = "aaa001"
+        handleChange  = {jest.fn()}
+        handleSave    = {jest.fn()}
       />)
       target = screen.getByDisplayValue('保存')
     })
