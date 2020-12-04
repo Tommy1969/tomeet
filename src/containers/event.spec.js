@@ -1,39 +1,32 @@
 import React from 'react'
-import { fireEvent, render, screen } from '@testing-library/react'
+import {RecoilRoot} from "recoil"
+import {fireEvent, render, screen} from '@testing-library/react'
 import {EventContainer} from './event'
 
-describe('', () => {
-  const mockChange  = jest.fn()
-  const mockSave    = jest.fn()
+describe('イベントコンテナが動作すること', () => {
   beforeEach(() => {
-    render(<EventContainer
-      title         = "品川アジャイル定例会"
-      place         = "東京駅"
-      handleChange  = {mockChange}
-      handleSave    = {mockSave}
-    />)
+    render(
+      <RecoilRoot>
+        <EventContainer />
+      </RecoilRoot>
+    )
   })
-  it('タイトルが設定されること', () => {
-    const target = screen.getByDisplayValue('品川アジャイル定例会')
-    expect(target).toBeInTheDocument()
-  })
-  it('開催地が設定されること', () => {
-    const target = screen.getByDisplayValue('東京駅')
-    expect(target).toBeInTheDocument()
-  })
-  it('イベント名のチェンジハンドラーが呼ばれること', () => {
+  it('イベント名が変更できること', () => {
     const target = screen.getByLabelText('イベント名')
-    fireEvent.change(target, {target: {value: ''}})
-    expect(mockChange).toBeCalledTimes(1)
+    expect(target).toHaveValue('')
+    fireEvent.change(target, {target: {value: '品川アジャイル定例会'}})
+    expect(target).toHaveValue('品川アジャイル定例会')
   })
-  it('開催地のチェンジハンドラーが呼ばれること', () => {
+  it('開催地を変更できること', () => {
     const target = screen.getByLabelText('開催地')
-    fireEvent.change(target, {target: {value: ''}})
-    expect(mockChange).toBeCalledTimes(1)
+    expect(target).toHaveValue('')
+    fireEvent.change(target, {target: {value: '東京駅'}})
+    expect(target).toHaveValue('東京駅')
   })
-  it('保存ハンドラーが呼ばれること', () => {
+  it('localStorage.setItem が呼ばれること', () => {
     const target = screen.getByDisplayValue('保存')
+    expect(target).toBeInTheDocument()
     fireEvent.click(target)
-    expect(mockSave).toBeCalledTimes(1)
+    expect(localStorage.setItem).toBeCalledTimes(1)
   })
 })

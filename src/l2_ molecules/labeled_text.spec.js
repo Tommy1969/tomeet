@@ -9,6 +9,7 @@ describe('イベント登録フォームが期待通りに動作すること', (
     beforeEach(() => {
       render(<LabeledText
         id            = "aaa001"
+        name          = "name002"
         label         = "ラベル01"
         handleChange  = {mockChange}
         value         = "値009"
@@ -20,6 +21,9 @@ describe('イベント登録フォームが期待通りに動作すること', (
     })
     it('テキスト入力欄であること', () => {
       expect(target).toHaveAttribute('type', 'text')
+    })
+    it('渡した name 設定されること', () => {
+      expect(target).toHaveAttribute('name', 'name002')
     })
     it('渡した ID が設定されること', () => {
       expect(target).toHaveAttribute('id', 'aaa001')

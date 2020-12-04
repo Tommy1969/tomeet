@@ -1,9 +1,16 @@
 import React from 'react'
 import {EventContainer} from './containers/event'
+import {RecoilRoot} from "recoil"
+import RecoilLogger from 'recoil-logger'
 
 function App() {
   return (
-    <EventContainer />
+    <React.StrictMode>
+      <RecoilRoot>
+        <RecoilLogger />
+        <EventContainer />
+      </RecoilRoot>
+    </React.StrictMode>
   )
 }
 

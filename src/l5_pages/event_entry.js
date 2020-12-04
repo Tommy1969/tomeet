@@ -33,12 +33,14 @@ export const EventEntry = ({id, title, place, ...props}) =>
     <legend>イベント登録</legend>
     <LabeledText
       id            = {id+'_title'}
+      name          = "title"
       label         = "イベント名"
       value         = {title}
       handleChange  = {props.handleChange}
       />
     <LabeledText
       id            = {id+'_place'}
+      name          = "place"
       label         = "開催地"
       value         = {place}
       handleChange  = {props.handleChange}

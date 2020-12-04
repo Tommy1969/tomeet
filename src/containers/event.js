@@ -1,14 +1,39 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {EventEntry} from '../l5_pages/event_entry'
+import {atom, useRecoilState} from 'recoil'
 
-export const EventContainer = ({title, place, ...props}) => {
-  return(
+import {EventEntry} from '../l5_pages/event_entry'
+import {Store} from '../modules/store'
+
+const init = () => {
+  const json = Store.load('event')
+  return json ? JSON.parse(json) : {title:'', place: ''}
+}
+
+const eventState = atom({
+  key:                  'eventState',
+  default:              init(),
+  persistence_UNSTABLE: {type: 'log'}
+})
+
+export const EventContainer = props => {
+  const [event, setEvent] = useRecoilState(eventState)
+
+  const handle = {
+    change: e => {
+      setEvent({...event, [e.target.name]: e.target.value})
+    },
+    save: e => {
+      Store.save('event', JSON.stringify(event))
+    }
+  }
+
+  return (
     <EventEntry
-      title         = {title}
-      place         = {place}
-      handleChange  = {props.handleChange}
-      handleSave    = {props.handleSave}
+      title         = {event.title}
+      place         = {event.place}
+      handleChange  = {handle.change}
+      handleSave    = {handle.save}
     />
   )
 }
