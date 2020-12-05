@@ -1,8 +1,10 @@
 export const Store = {
-  save: (key, value) => {
-    localStorage.setItem(key, value)
+  KEY: 'event',
+  save: obj => {
+    localStorage.setItem(Store.KEY, JSON.stringify(obj))
   },
-  load: (key) => {
-    return localStorage.getItem(key)
+  load: (init=null) => {
+    const raw = localStorage.getItem(Store.KEY)
+    return raw ? JSON.parse(raw) : init
   }
 }

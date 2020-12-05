@@ -6,8 +6,7 @@ import {EventEntry} from '../l5_pages/event_entry'
 import {Store} from '../modules/store'
 
 const init = () => {
-  const json = Store.load('event')
-  return json ? JSON.parse(json) : {title:'', place: ''}
+  return Store.load({title: '', place: ''})
 }
 
 const eventState = atom({
@@ -24,7 +23,7 @@ export const EventContainer = props => {
       setEvent({...event, [e.target.name]: e.target.value})
     },
     save: e => {
-      Store.save('event', JSON.stringify(event))
+      Store.save(event)
     }
   }
 
