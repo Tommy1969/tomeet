@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {LabeledText} from '../l2_ molecules/labeled_text'
+import {ButtonPalette} from '../l2_ molecules/button_palette'
 
 const FieldSet = styled.fieldset`
   margin:                 1rem;
@@ -9,25 +10,6 @@ const FieldSet = styled.fieldset`
   grid-template-columns:  1fr;
   grid-row-gap:           1rem;
 `
-
-const Span = styled.span`
-  text-align: right;
-`
-
-const Button = ({label, handleClick, ...props}) =>
-  <Span>
-    <input
-      type    = "button"
-      value   = {label}
-      onClick = {handleClick}
-      {...props}
-      />
-  </Span>
-
-Button.propTypes = {
-  label:        PropTypes.string.isRequired,
-  handleClick:  PropTypes.func.isRequired
-}
 
 export const EventEntry = ({id, title, place, ...props}) =>
   <FieldSet>
@@ -46,7 +28,7 @@ export const EventEntry = ({id, title, place, ...props}) =>
       value         = {place}
       handleChange  = {props.handleChange}
       />
-    <Button
+    <ButtonPalette
       label         = "保存"
       handleClick   = {props.handleSave}
       />
