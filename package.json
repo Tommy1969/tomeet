@@ -10,9 +10,9 @@
     "styled-components": "^5.2.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
     "coverage": "yarn test --coverage --watchAll=false",
     "doc": "esdoc",
     "eject": "react-scripts eject"
@@ -43,12 +43,24 @@
     "husky": "^4.3.0",
     "jest-html-reporter": "^3.3.0",
     "jest-localstorage-mock": "^2.4.3",
+    "react-app-rewired": "^2.1.7",
     "recoil-logger": "^1.1.1",
     "yarnhook": "^0.5.1"
   },
   "jest": {
+    "coverageDirectory": "report/coverage",
     "coveragePathIgnorePatterns": [
       ".(stories|spec).*"
+    ],
+    "reporters": [
+      "default",
+      [
+        "./node_modules/jest-html-reporter",
+        {
+          "pageTitle": "Unit Test Report",
+          "outputPath": "report/jest.html"
+        }
+      ]
     ]
   },
   "husky": {

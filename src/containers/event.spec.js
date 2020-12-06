@@ -12,7 +12,7 @@ describe('イベントコンテナが動作すること', () => {
       </RecoilRoot>
     )
   })
-  it('イベント名が変更できること', () => {
+  it('イベント名を変更できること', () => {
     const target = screen.getByLabelText('イベント名')
     expect(target).toHaveValue('')
     fireEvent.change(target, {target: {value: '品川アジャイル定例会'}})

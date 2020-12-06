@@ -53,7 +53,7 @@ describe('イベント登録フォームが期待通りに動作すること', (
     it('ボタンがあること', () => {
       expect(target).toBeInTheDocument()
     })
-    it('ボタンであること', () => {
+    it('タイプがボタンであること', () => {
       expect(target).toHaveAttribute('type', 'button')
     })
   })
