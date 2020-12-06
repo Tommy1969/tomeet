@@ -7,15 +7,15 @@ const Div = styled.div`
   grid-template-columns:  100px 1fr;
 `
 
-export const LabeledText = ({id, name, label, value, ...props}) =>
+export const LabeledText = ({id, label, handleChange, ...props}) =>
   <Div>
     <label htmlFor={id}>{label}</label>
     <input
       id        = {id}
-      name      = {name}
       type      = "text"
-      value     = {value}
-      onChange  = {props.handleChange || (() => {})} />
+      onChange  = {handleChange}
+      {...props}
+      />
   </Div>
 
 LabeledText.propTypes = {

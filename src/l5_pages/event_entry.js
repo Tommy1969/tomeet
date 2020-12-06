@@ -14,12 +14,13 @@ const Span = styled.span`
   text-align: right;
 `
 
-const Button = ({label, ...props}) =>
+const Button = ({label, handleClick, ...props}) =>
   <Span>
     <input
       type    = "button"
       value   = {label}
-      onClick = {props.handleClick}
+      onClick = {handleClick}
+      {...props}
       />
   </Span>
 
