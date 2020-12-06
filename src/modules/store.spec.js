@@ -1,7 +1,8 @@
 import {Store} from './store'
 
-
+/** @test {Store} */
 describe('Store が期待通りに動作すること', () => {
+  /** @test {Store#save} */
   describe('セーブが行われること', () => {
     beforeEach(() => {
       Store.save({'key':'value'})
@@ -13,6 +14,8 @@ describe('Store が期待通りに動作すること', () => {
       expect(localStorage.setItem).toBeCalledWith('event', '{"key":"value"}')
     })
   })
+
+  /** @test {Store#load} */
   describe('ロードが行われること', () => {
     it('getItem が呼び出されること', () => {
       Store.load()

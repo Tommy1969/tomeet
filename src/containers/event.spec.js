@@ -3,6 +3,7 @@ import {RecoilRoot} from "recoil"
 import {fireEvent, render, screen} from '@testing-library/react'
 import {EventContainer} from './event'
 
+/** @test {EventContainer} */
 describe('イベントコンテナが動作すること', () => {
   beforeEach(() => {
     render(
