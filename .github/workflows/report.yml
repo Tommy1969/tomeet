@@ -30,9 +30,18 @@ jobs:
         run: |
           yarn install
           git worktree add report
-          yarn coverage
-          yarn doc
-          yarn plato
+
+      - name: Coverage
+        run: yarn coverage
+
+      - name: ESdoc
+        run: yarn doc
+
+      - name: Static analysis
+        run: yarn plato
+
+      - name: git push
+        run: |
           cd report
           git add .
           git commit -m 'Reports auto update'
