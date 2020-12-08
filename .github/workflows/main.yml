@@ -28,6 +28,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Update reports
         run: |
+          yarn install
           yarn coverage
           yarn doc
           yarn plato
