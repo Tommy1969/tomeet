@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Reporting
 
 # Controls when the action will run. 
 on:
@@ -50,4 +50,4 @@ jobs:
           cd report
           git add .
           git commit -m 'Reports auto update'
-          git push
+          git push origin report
