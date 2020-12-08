@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/l5_pages/event_entry.spec.js | tomeet</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-App">App</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-register">register</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-unregister">unregister</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#containers">containers</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-EventContainer">EventContainer</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#l2--molecules">l2_ molecules</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ButtonPalette">ButtonPalette</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-LabeledText">LabeledText</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#l5-pages">l5_pages</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-EventEntry">EventEntry</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#modules">modules</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Store">Store</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/l5_pages/event_entry.spec.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React from &apos;react&apos;
+import {render, screen} from &apos;@testing-library/react&apos;
+import {EventEntry} from &apos;./event_entry&apos;
+
+/** @test {EventEntry} */
+describe(&apos;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x767B;&#x9332;&#x30D5;&#x30A9;&#x30FC;&#x30E0;&#x304C;&#x671F;&#x5F85;&#x901A;&#x308A;&#x306B;&#x52D5;&#x4F5C;&#x3059;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
+  describe(&apos;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x540D;&#x5165;&#x529B;&#x6B04;&#x304C;&#x671F;&#x5F85;&#x901A;&#x308A;&#x306B;&#x52D5;&#x4F5C;&#x3059;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
+    let target = null
+    beforeEach(() =&gt; {
+      render(&lt;EventEntry
+        id            = &quot;aaa001&quot;
+        handleChange  = {jest.fn()}
+        handleSave    = {jest.fn()}
+      /&gt;)
+      target = screen.getByLabelText(&apos;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x540D;&apos;)
+    })
+    it(&apos;&#x5165;&#x529B;&#x6B04;&#x304C;&#x3042;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
+      expect(target).toBeInTheDocument()
+    })
+    it(&apos;&#x30C6;&#x30AD;&#x30B9;&#x30C8;&#x5165;&#x529B;&#x6B04;&#x3067;&#x3042;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
+      expect(target).toHaveAttribute(&apos;type&apos;, &apos;text&apos;)
+    })
+  })
+
+  describe(&apos;&#x958B;&#x50AC;&#x5730;&#x540D;&#x5165;&#x529B;&#x6B04;&#x304C;&#x671F;&#x5F85;&#x901A;&#x308A;&#x306B;&#x52D5;&#x4F5C;&#x3059;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
+    let target = null
+    beforeEach(() =&gt; {
+      render(&lt;EventEntry
+        id            = &quot;aaa001&quot;
+        handleChange  = {jest.fn()}
+        handleSave    = {jest.fn()}
+      /&gt;)
+      target = screen.getByLabelText(&apos;&#x958B;&#x50AC;&#x5730;&apos;)
+    })
+    it(&apos;&#x5165;&#x529B;&#x6B04;&#x304C;&#x3042;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
+      expect(target).toBeInTheDocument()
+    })
+    it(&apos;&#x30C6;&#x30AD;&#x30B9;&#x30C8;&#x5165;&#x529B;&#x6B04;&#x3067;&#x3042;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
+      expect(target).toHaveAttribute(&apos;type&apos;, &apos;text&apos;)
+    })
+  })
+
+  describe(&apos;&#x4FDD;&#x5B58;&#x30DC;&#x30BF;&#x30F3;&#x304C;&#x671F;&#x5F85;&#x901A;&#x308A;&#x306B;&#x52D5;&#x4F5C;&#x3059;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
+    let target = null
+    beforeEach(() =&gt; {
+      render(&lt;EventEntry
+        id            = &quot;aaa001&quot;
+        handleChange  = {jest.fn()}
+        handleSave    = {jest.fn()}
+      /&gt;)
+      target = screen.getByDisplayValue(&apos;&#x4FDD;&#x5B58;&apos;)
+    })
+    it(&apos;&#x30DC;&#x30BF;&#x30F3;&#x304C;&#x3042;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
+      expect(target).toBeInTheDocument()
+    })
+    it(&apos;&#x30BF;&#x30A4;&#x30D7;&#x304C;&#x30DC;&#x30BF;&#x30F3;&#x3067;&#x3042;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
+      expect(target).toHaveAttribute(&apos;type&apos;, &apos;button&apos;)
+    })
+  })
+})
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
