@@ -29,6 +29,7 @@ jobs:
       - name: Update reports
         run: |
           yarn install
+          git worktree add report
           yarn coverage
           yarn doc
           yarn plato
