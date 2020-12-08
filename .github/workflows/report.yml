@@ -30,6 +30,10 @@ jobs:
         run: |
           yarn install
           git worktree add report
+          cd report
+          git config pull.ff only
+          git pull
+          cd ..
 
       - name: Coverage
         run: yarn coverage
@@ -48,9 +52,6 @@ jobs:
       - name: git commit & push
         run: |
           cd report
-          git pull
           git add .
           git commit -m 'Reports auto update'
-          git fetch
-          git merge
           git push origin report
