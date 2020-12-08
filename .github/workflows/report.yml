@@ -29,11 +29,8 @@ jobs:
       - name: install modules
         run: |
           yarn install
+          git fetch --prune
           git worktree add report
-          cd report
-          git config pull.ff only
-          git pull
-          cd ..
 
       - name: Coverage
         run: yarn coverage
