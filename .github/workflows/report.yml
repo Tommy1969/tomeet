@@ -40,7 +40,12 @@ jobs:
       - name: Static analysis
         run: yarn plato
 
-      - name: git push
+      - name: git setting
+        run: |
+          git config --local user.email "tokutomi@degino.com"
+          git config --local user.name "Tommy109"
+
+      - name: git commit & push
         run: |
           cd report
           git add .
