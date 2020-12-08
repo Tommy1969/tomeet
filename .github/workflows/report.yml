@@ -50,5 +50,6 @@ jobs:
           cd report
           git add .
           git commit -m 'Reports auto update'
-          git pull
+          git fetch
+          git merge
           git push origin report
