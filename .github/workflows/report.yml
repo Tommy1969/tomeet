@@ -29,11 +29,13 @@ jobs:
       - name: install modules
         run: |
           yarn install
+
+      - name: setup report directory
+        run: |
           git fetch --prune
+          git checkout report
+          git switch develop
           git worktree add report
-          pushd report
-          git merge
-          popd
 
       - name: Coverage
         run: yarn coverage
