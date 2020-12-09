@@ -33,8 +33,7 @@ jobs:
       - name: setup report directory
         run: |
           git fetch --prune
-          git checkout report
-          git switch develop
+          git branch report origin/report
           git worktree add report
 
       - name: Coverage
