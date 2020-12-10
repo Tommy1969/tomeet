@@ -1,5 +1,3 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import {atom, useRecoilState} from 'recoil'
 
 import {EventEntry} from '../l5_pages/event_entry'

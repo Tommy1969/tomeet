@@ -1,5 +1,3 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {LabeledText} from '../l2_ molecules/labeled_text'
 import {ButtonPalette} from '../l2_ molecules/button_palette'
