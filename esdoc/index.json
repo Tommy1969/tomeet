@@ -601,7 +601,7 @@
     "__docId__": 50,
     "kind": "file",
     "name": "src/containers/event.js",
-    "content": "import React from 'react'\nimport PropTypes from 'prop-types'\nimport {atom, useRecoilState} from 'recoil'\n\nimport {EventEntry} from '../l5_pages/event_entry'\nimport {Store} from '../modules/store'\n\nconst init = () => {\n  return Store.load({title: '', place: ''})\n}\n\nconst eventState = atom({\n  key:                  'eventState',\n  default:              init(),\n  persistence_UNSTABLE: {type: 'log'}\n})\n\nexport const EventContainer = props => {\n  const [event, setEvent] = useRecoilState(eventState)\n\n  const handle = {\n    change: e => {\n      setEvent({...event, [e.target.name]: e.target.value})\n    },\n    save: e => {\n      Store.save(event)\n    }\n  }\n\n  return (\n    <EventEntry\n      title         = {event.title}\n      place         = {event.place}\n      handleChange  = {handle.change}\n      handleSave    = {handle.save}\n    />\n  )\n}\n",
+    "content": "import {atom, useRecoilState} from 'recoil'\n\nimport {EventEntry} from '../l5_pages/event_entry'\nimport {Store} from '../modules/store'\n\nconst init = () => {\n  return Store.load({title: '', place: ''})\n}\n\nconst eventState = atom({\n  key:                  'eventState',\n  default:              init(),\n  persistence_UNSTABLE: {type: 'log'}\n})\n\nexport const EventContainer = props => {\n  const [event, setEvent] = useRecoilState(eventState)\n\n  const handle = {\n    change: e => {\n      setEvent({...event, [e.target.name]: e.target.value})\n    },\n    save: e => {\n      Store.save(event)\n    }\n  }\n\n  return (\n    <EventEntry\n      title         = {event.title}\n      place         = {event.place}\n      handleChange  = {handle.change}\n      handleSave    = {handle.save}\n    />\n  )\n}\n",
     "static": true,
     "longname": "/home/runner/work/tomeet/tomeet/src/containers/event.js",
     "access": "public",
@@ -622,7 +622,7 @@
     "importPath": "tomeet/src/containers/event.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 8,
+    "lineNumber": 6,
     "undocument": true,
     "params": [],
     "return": {
@@ -644,7 +644,7 @@
     "importPath": "tomeet/src/containers/event.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 12,
+    "lineNumber": 10,
     "undocument": true,
     "type": {
       "types": [
@@ -667,7 +667,7 @@
     "importPath": "tomeet/src/containers/event.js",
     "importStyle": "{EventContainer}",
     "description": null,
-    "lineNumber": 18,
+    "lineNumber": 16,
     "undocument": true,
     "params": [
       {
@@ -709,7 +709,7 @@
     "__docId__": 56,
     "kind": "file",
     "name": "src/l2_ molecules/button_palette.js",
-    "content": "import React from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\nconst Span = styled.span`\n  text-align: right;\n`\n\nexport const ButtonPalette = ({label, handleClick, ...props}) =>\n  <Span>\n    <input\n      type    = \"button\"\n      value   = {label}\n      onClick = {handleClick}\n      {...props}\n      />\n  </Span>\n\nButtonPalette.propTypes = {\n  label:        PropTypes.string.isRequired,\n  handleClick:  PropTypes.func.isRequired\n}\n",
+    "content": "import PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\nconst Span = styled.span`\n  text-align: right;\n`\n\nexport const ButtonPalette = ({label, handleClick, ...props}) =>\n  <Span>\n    <input\n      type    = \"button\"\n      value   = {label}\n      onClick = {handleClick}\n      {...props}\n      />\n  </Span>\n\nButtonPalette.propTypes = {\n  label:        PropTypes.string.isRequired,\n  handleClick:  PropTypes.func.isRequired\n}\n",
     "static": true,
     "longname": "/home/runner/work/tomeet/tomeet/src/l2_ molecules/button_palette.js",
     "access": "public",
@@ -728,7 +728,7 @@
     "importPath": "tomeet/src/l2_ molecules/button_palette.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 5,
+    "lineNumber": 4,
     "undocument": true,
     "type": {
       "types": [
@@ -751,7 +751,7 @@
     "importPath": "tomeet/src/l2_ molecules/button_palette.js",
     "importStyle": "{ButtonPalette}",
     "description": null,
-    "lineNumber": 9,
+    "lineNumber": 8,
     "undocument": true,
     "params": [
       {
@@ -784,7 +784,7 @@
     "__docId__": 60,
     "kind": "file",
     "name": "src/l2_ molecules/labeled_text.js",
-    "content": "import React from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\nconst Div = styled.div`\n  display:                grid;\n  grid-template-columns:  100px 1fr;\n`\n\nexport const LabeledText = ({id, label, handleChange, ...props}) =>\n  <Div>\n    <label htmlFor={id}>{label}</label>\n    <input\n      id        = {id}\n      type      = \"text\"\n      onChange  = {handleChange}\n      {...props}\n      />\n  </Div>\n\nLabeledText.propTypes = {\n  id:           PropTypes.string.isRequired,\n  name:         PropTypes.string.isRequired,\n  label:        PropTypes.string.isRequired,\n  handleChange: PropTypes.func.isRequired,\n  value:        PropTypes.string\n}\n",
+    "content": "import PropTypes from 'prop-types'\nimport styled from 'styled-components'\n\nconst Div = styled.div`\n  display:                grid;\n  grid-template-columns:  100px 1fr;\n`\n\nexport const LabeledText = ({id, label, handleChange, ...props}) =>\n  <Div>\n    <label htmlFor={id}>{label}</label>\n    <input\n      id        = {id}\n      type      = \"text\"\n      onChange  = {handleChange}\n      {...props}\n      />\n  </Div>\n\nLabeledText.propTypes = {\n  id:           PropTypes.string.isRequired,\n  name:         PropTypes.string.isRequired,\n  label:        PropTypes.string.isRequired,\n  handleChange: PropTypes.func.isRequired,\n  value:        PropTypes.string\n}\n",
     "static": true,
     "longname": "/home/runner/work/tomeet/tomeet/src/l2_ molecules/labeled_text.js",
     "access": "public",
@@ -803,7 +803,7 @@
     "importPath": "tomeet/src/l2_ molecules/labeled_text.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 5,
+    "lineNumber": 4,
     "undocument": true,
     "type": {
       "types": [
@@ -826,7 +826,7 @@
     "importPath": "tomeet/src/l2_ molecules/labeled_text.js",
     "importStyle": "{LabeledText}",
     "description": null,
-    "lineNumber": 10,
+    "lineNumber": 9,
     "undocument": true,
     "params": [
       {
@@ -860,7 +860,7 @@
     "__docId__": 64,
     "kind": "file",
     "name": "src/l5_pages/event_entry.js",
-    "content": "import React from 'react'\nimport PropTypes from 'prop-types'\nimport styled from 'styled-components'\nimport {LabeledText} from '../l2_ molecules/labeled_text'\nimport {ButtonPalette} from '../l2_ molecules/button_palette'\n\nconst FieldSet = styled.fieldset`\n  margin:                 1rem;\n  display:                grid;\n  grid-template-columns:  1fr;\n  grid-row-gap:           1rem;\n`\n\nexport const EventEntry = ({id, title, place, ...props}) =>\n  <FieldSet>\n    <legend>イベント登録</legend>\n    <LabeledText\n      id            = {id+'_title'}\n      name          = \"title\"\n      label         = \"イベント名\"\n      value         = {title}\n      handleChange  = {props.handleChange}\n      />\n    <LabeledText\n      id            = {id+'_place'}\n      name          = \"place\"\n      label         = \"開催地\"\n      value         = {place}\n      handleChange  = {props.handleChange}\n      />\n    <ButtonPalette\n      label         = \"保存\"\n      handleClick   = {props.handleSave}\n      />\n  </FieldSet>\n",
+    "content": "import styled from 'styled-components'\nimport {LabeledText} from '../l2_ molecules/labeled_text'\nimport {ButtonPalette} from '../l2_ molecules/button_palette'\n\nconst FieldSet = styled.fieldset`\n  margin:                 1rem;\n  display:                grid;\n  grid-template-columns:  1fr;\n  grid-row-gap:           1rem;\n`\n\nexport const EventEntry = ({id, title, place, ...props}) =>\n  <FieldSet>\n    <legend>イベント登録</legend>\n    <LabeledText\n      id            = {id+'_title'}\n      name          = \"title\"\n      label         = \"イベント名\"\n      value         = {title}\n      handleChange  = {props.handleChange}\n      />\n    <LabeledText\n      id            = {id+'_place'}\n      name          = \"place\"\n      label         = \"開催地\"\n      value         = {place}\n      handleChange  = {props.handleChange}\n      />\n    <ButtonPalette\n      label         = \"保存\"\n      handleClick   = {props.handleSave}\n      />\n  </FieldSet>\n",
     "static": true,
     "longname": "/home/runner/work/tomeet/tomeet/src/l5_pages/event_entry.js",
     "access": "public",
@@ -879,7 +879,7 @@
     "importPath": "tomeet/src/l5_pages/event_entry.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 7,
+    "lineNumber": 5,
     "undocument": true,
     "type": {
       "types": [
@@ -902,7 +902,7 @@
     "importPath": "tomeet/src/l5_pages/event_entry.js",
     "importStyle": "{EventEntry}",
     "description": null,
-    "lineNumber": 14,
+    "lineNumber": 12,
     "undocument": true,
     "params": [
       {

@@ -14,33 +14,33 @@
       "expectCount": 3,
       "actualCount": 0,
       "undocumentLines": [
-        8,
-        12,
-        18
+        6,
+        10,
+        16
       ]
     },
     "src/l2_ molecules/button_palette.js": {
       "expectCount": 2,
       "actualCount": 0,
       "undocumentLines": [
-        5,
-        9
+        4,
+        8
       ]
     },
     "src/l2_ molecules/labeled_text.js": {
       "expectCount": 2,
       "actualCount": 0,
       "undocumentLines": [
-        5,
-        10
+        4,
+        9
       ]
     },
     "src/l5_pages/event_entry.js": {
       "expectCount": 2,
       "actualCount": 0,
       "undocumentLines": [
-        7,
-        14
+        5,
+        12
       ]
     },
     "src/modules/store.js": {
