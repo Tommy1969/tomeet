@@ -1,6 +1,6 @@
 import {atom, useRecoilState} from 'recoil'
 
-import {EventEntry} from '../l5_pages/event_entry'
+import {EventPage} from '../l5_pages/event_page'
 import {Store} from '../modules/store'
 
 const init = () => {
@@ -26,7 +26,7 @@ export const EventContainer = props => {
   }
 
   return (
-    <EventEntry
+    <EventPage
       title         = {event.title}
       place         = {event.place}
       handleChange  = {handle.change}
