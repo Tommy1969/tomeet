@@ -7,12 +7,16 @@
 
 # testing
 /coverage
+/report
 
 # production
 /build
 
 # eslint
 .eslintcache
+
+# documents
+/doc
 
 # misc
 .DS_Store
