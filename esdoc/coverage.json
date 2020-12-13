@@ -1,6 +1,6 @@
 {
   "coverage": "0%",
-  "expectCount": 16,
+  "expectCount": 17,
   "actualCount": 0,
   "files": {
     "src/App.js": {
@@ -35,12 +35,19 @@
         9
       ]
     },
-    "src/l5_pages/event_entry.js": {
+    "src/l3_organisms/event_enty.js": {
       "expectCount": 2,
       "actualCount": 0,
       "undocumentLines": [
         5,
         12
+      ]
+    },
+    "src/l5_pages/event_page.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
       ]
     },
     "src/modules/store.js": {

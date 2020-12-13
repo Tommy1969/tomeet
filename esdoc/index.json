@@ -601,7 +601,7 @@
     "__docId__": 50,
     "kind": "file",
     "name": "src/containers/event.js",
-    "content": "import {atom, useRecoilState} from 'recoil'\n\nimport {EventEntry} from '../l5_pages/event_entry'\nimport {Store} from '../modules/store'\n\nconst init = () => {\n  return Store.load({title: '', place: ''})\n}\n\nconst eventState = atom({\n  key:                  'eventState',\n  default:              init(),\n  persistence_UNSTABLE: {type: 'log'}\n})\n\nexport const EventContainer = props => {\n  const [event, setEvent] = useRecoilState(eventState)\n\n  const handle = {\n    change: e => {\n      setEvent({...event, [e.target.name]: e.target.value})\n    },\n    save: e => {\n      Store.save(event)\n    }\n  }\n\n  return (\n    <EventEntry\n      title         = {event.title}\n      place         = {event.place}\n      handleChange  = {handle.change}\n      handleSave    = {handle.save}\n    />\n  )\n}\n",
+    "content": "import {atom, useRecoilState} from 'recoil'\n\nimport {EventPage} from '../l5_pages/event_page'\nimport {Store} from '../modules/store'\n\nconst init = () => {\n  return Store.load({title: '', place: ''})\n}\n\nconst eventState = atom({\n  key:                  'eventState',\n  default:              init(),\n  persistence_UNSTABLE: {type: 'log'}\n})\n\nexport const EventContainer = props => {\n  const [event, setEvent] = useRecoilState(eventState)\n\n  const handle = {\n    change: e => {\n      setEvent({...event, [e.target.name]: e.target.value})\n    },\n    save: e => {\n      Store.save(event)\n    }\n  }\n\n  return (\n    <EventPage\n      title         = {event.title}\n      place         = {event.place}\n      handleChange  = {handle.change}\n      handleSave    = {handle.save}\n    />\n  )\n}\n",
     "static": true,
     "longname": "/home/runner/work/tomeet/tomeet/src/containers/event.js",
     "access": "public",
@@ -859,24 +859,35 @@
   {
     "__docId__": 64,
     "kind": "file",
-    "name": "src/l5_pages/event_entry.js",
-    "content": "import styled from 'styled-components'\nimport {LabeledText} from '../l2_ molecules/labeled_text'\nimport {ButtonPalette} from '../l2_ molecules/button_palette'\n\nconst FieldSet = styled.fieldset`\n  margin:                 1rem;\n  display:                grid;\n  grid-template-columns:  1fr;\n  grid-row-gap:           1rem;\n`\n\nexport const EventEntry = ({id, title, place, ...props}) =>\n  <FieldSet>\n    <legend>イベント登録</legend>\n    <LabeledText\n      id            = {id+'_title'}\n      name          = \"title\"\n      label         = \"イベント名\"\n      value         = {title}\n      handleChange  = {props.handleChange}\n      />\n    <LabeledText\n      id            = {id+'_place'}\n      name          = \"place\"\n      label         = \"開催地\"\n      value         = {place}\n      handleChange  = {props.handleChange}\n      />\n    <ButtonPalette\n      label         = \"保存\"\n      handleClick   = {props.handleSave}\n      />\n  </FieldSet>\n",
+    "name": "src/l3_organisms/event_entry.spec.js",
+    "content": "import React from 'react'\nimport {render, screen} from '@testing-library/react'\nimport {EventEntry} from './event_enty'\n\n/** @test {EventEntry} */\ndescribe('イベント登録フォームが期待通りに動作すること', () => {\n  describe('イベント名入力欄が期待通りに動作すること', () => {\n    let target = null\n    beforeEach(() => {\n      render(<EventEntry\n        id            = \"aaa001\"\n        handleChange  = {jest.fn()}\n        handleSave    = {jest.fn()}\n      />)\n      target = screen.getByLabelText('イベント名')\n    })\n    it('入力欄があること', () => {\n      expect(target).toBeInTheDocument()\n    })\n    it('テキスト入力欄であること', () => {\n      expect(target).toHaveAttribute('type', 'text')\n    })\n  })\n\n  describe('開催地名入力欄が期待通りに動作すること', () => {\n    let target = null\n    beforeEach(() => {\n      render(<EventEntry\n        id            = \"aaa001\"\n        handleChange  = {jest.fn()}\n        handleSave    = {jest.fn()}\n      />)\n      target = screen.getByLabelText('開催地')\n    })\n    it('入力欄があること', () => {\n      expect(target).toBeInTheDocument()\n    })\n    it('テキスト入力欄であること', () => {\n      expect(target).toHaveAttribute('type', 'text')\n    })\n  })\n\n  describe('保存ボタンが期待通りに動作すること', () => {\n    let target = null\n    beforeEach(() => {\n      render(<EventEntry\n        id            = \"aaa001\"\n        handleChange  = {jest.fn()}\n        handleSave    = {jest.fn()}\n      />)\n      target = screen.getByDisplayValue('保存')\n    })\n    it('ボタンがあること', () => {\n      expect(target).toBeInTheDocument()\n    })\n    it('タイプがボタンであること', () => {\n      expect(target).toHaveAttribute('type', 'button')\n    })\n  })\n})\n",
     "static": true,
-    "longname": "/home/runner/work/tomeet/tomeet/src/l5_pages/event_entry.js",
+    "longname": "/home/runner/work/tomeet/tomeet/src/l3_organisms/event_entry.spec.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
   },
   {
     "__docId__": 65,
+    "kind": "file",
+    "name": "src/l3_organisms/event_enty.js",
+    "content": "import styled from 'styled-components'\nimport {LabeledText} from '../l2_ molecules/labeled_text'\nimport {ButtonPalette} from '../l2_ molecules/button_palette'\n\nconst FieldSet = styled.fieldset`\n  margin:                 1rem;\n  display:                grid;\n  grid-template-columns:  1fr;\n  grid-row-gap:           1rem;\n`\n\nexport const EventEntry = ({id, title, place, ...props}) =>\n  <FieldSet>\n    <legend>イベント登録</legend>\n    <LabeledText\n      id            = {id+'_title'}\n      name          = \"title\"\n      label         = \"イベント名\"\n      value         = {title}\n      handleChange  = {props.handleChange}\n      />\n    <LabeledText\n      id            = {id+'_place'}\n      name          = \"place\"\n      label         = \"開催地\"\n      value         = {place}\n      handleChange  = {props.handleChange}\n      />\n    <ButtonPalette\n      label         = \"保存\"\n      handleClick   = {props.handleSave}\n      />\n  </FieldSet>\n",
+    "static": true,
+    "longname": "/home/runner/work/tomeet/tomeet/src/l3_organisms/event_enty.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 66,
     "kind": "variable",
     "name": "FieldSet",
-    "memberof": "src/l5_pages/event_entry.js",
+    "memberof": "src/l3_organisms/event_enty.js",
     "static": true,
-    "longname": "src/l5_pages/event_entry.js~FieldSet",
+    "longname": "src/l3_organisms/event_enty.js~FieldSet",
     "access": "public",
     "export": false,
-    "importPath": "tomeet/src/l5_pages/event_entry.js",
+    "importPath": "tomeet/src/l3_organisms/event_enty.js",
     "importStyle": null,
     "description": null,
     "lineNumber": 5,
@@ -889,17 +900,17 @@
     "ignore": true
   },
   {
-    "__docId__": 66,
+    "__docId__": 67,
     "kind": "function",
     "name": "EventEntry",
-    "memberof": "src/l5_pages/event_entry.js",
+    "memberof": "src/l3_organisms/event_enty.js",
     "generator": false,
     "async": false,
     "static": true,
-    "longname": "src/l5_pages/event_entry.js~EventEntry",
+    "longname": "src/l3_organisms/event_enty.js~EventEntry",
     "access": "public",
     "export": true,
-    "importPath": "tomeet/src/l5_pages/event_entry.js",
+    "importPath": "tomeet/src/l3_organisms/event_enty.js",
     "importStyle": "{EventEntry}",
     "description": null,
     "lineNumber": 12,
@@ -922,18 +933,51 @@
     "return": null
   },
   {
-    "__docId__": 67,
+    "__docId__": 68,
     "kind": "file",
-    "name": "src/l5_pages/event_entry.spec.js",
-    "content": "import React from 'react'\nimport {render, screen} from '@testing-library/react'\nimport {EventEntry} from './event_entry'\n\n/** @test {EventEntry} */\ndescribe('イベント登録フォームが期待通りに動作すること', () => {\n  describe('イベント名入力欄が期待通りに動作すること', () => {\n    let target = null\n    beforeEach(() => {\n      render(<EventEntry\n        id            = \"aaa001\"\n        handleChange  = {jest.fn()}\n        handleSave    = {jest.fn()}\n      />)\n      target = screen.getByLabelText('イベント名')\n    })\n    it('入力欄があること', () => {\n      expect(target).toBeInTheDocument()\n    })\n    it('テキスト入力欄であること', () => {\n      expect(target).toHaveAttribute('type', 'text')\n    })\n  })\n\n  describe('開催地名入力欄が期待通りに動作すること', () => {\n    let target = null\n    beforeEach(() => {\n      render(<EventEntry\n        id            = \"aaa001\"\n        handleChange  = {jest.fn()}\n        handleSave    = {jest.fn()}\n      />)\n      target = screen.getByLabelText('開催地')\n    })\n    it('入力欄があること', () => {\n      expect(target).toBeInTheDocument()\n    })\n    it('テキスト入力欄であること', () => {\n      expect(target).toHaveAttribute('type', 'text')\n    })\n  })\n\n  describe('保存ボタンが期待通りに動作すること', () => {\n    let target = null\n    beforeEach(() => {\n      render(<EventEntry\n        id            = \"aaa001\"\n        handleChange  = {jest.fn()}\n        handleSave    = {jest.fn()}\n      />)\n      target = screen.getByDisplayValue('保存')\n    })\n    it('ボタンがあること', () => {\n      expect(target).toBeInTheDocument()\n    })\n    it('タイプがボタンであること', () => {\n      expect(target).toHaveAttribute('type', 'button')\n    })\n  })\n})\n",
+    "name": "src/l5_pages/event_page.js",
+    "content": "import styled from 'styled-components'\nimport {EventEntry} from '../l3_organisms/event_enty'\n\nexport const EventPage = ({id, title, place, ...props}) =>\n  <EventEntry\n    id = {id}\n    title = {title}\n    place = {place}\n    {...props}\n  />\n",
     "static": true,
-    "longname": "/home/runner/work/tomeet/tomeet/src/l5_pages/event_entry.spec.js",
+    "longname": "/home/runner/work/tomeet/tomeet/src/l5_pages/event_page.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 68,
+    "__docId__": 69,
+    "kind": "function",
+    "name": "EventPage",
+    "memberof": "src/l5_pages/event_page.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/l5_pages/event_page.js~EventPage",
+    "access": "public",
+    "export": true,
+    "importPath": "tomeet/src/l5_pages/event_page.js",
+    "importStyle": "{EventPage}",
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "params": [
+      {
+        "name": "objectPattern",
+        "types": [
+          "{\"id\": *, \"title\": *, \"place\": *, ...props: Object}"
+        ],
+        "defaultRaw": {
+          "id": null,
+          "title": null,
+          "place": null,
+          "props": {}
+        },
+        "defaultValue": "{\"id\":null,\"title\":null,\"place\":null,\"props\":{}}"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 70,
     "kind": "file",
     "name": "src/modules/store.js",
     "content": "export const Store = {\n  KEY: 'event',\n  save: obj => {\n    localStorage.setItem(Store.KEY, JSON.stringify(obj))\n  },\n  load: (init=null) => {\n    const raw = localStorage.getItem(Store.KEY)\n    return raw ? JSON.parse(raw) : init\n  }\n}\n",
@@ -944,7 +988,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 69,
+    "__docId__": 71,
     "kind": "variable",
     "name": "Store",
     "memberof": "src/modules/store.js",
@@ -964,7 +1008,7 @@
     }
   },
   {
-    "__docId__": 70,
+    "__docId__": 72,
     "kind": "file",
     "name": "src/modules/store.spec.js",
     "content": "import {Store} from './store'\n\n/** @test {Store} */\ndescribe('Store が期待通りに動作すること', () => {\n  /** @test {Store#save} */\n  describe('セーブが行われること', () => {\n    beforeEach(() => {\n      Store.save({'key':'value'})\n    })\n    it('setItem が呼び出されること', () => {\n      expect(localStorage.setItem).toBeCalledTimes(1)\n    })\n    it('パラメータが JSON であること', () => {\n      expect(localStorage.setItem).toBeCalledWith('event', '{\"key\":\"value\"}')\n    })\n  })\n\n  /** @test {Store#load} */\n  describe('ロードが行われること', () => {\n    it('getItem が呼び出されること', () => {\n      Store.load()\n      expect(localStorage.getItem).toBeCalledTimes(1)\n    })\n    it('JSON をパースしたオブジェクトが返ること', () => {\n      localStorage.getItem.mockReturnValue('{\"key\":\"value\"}')\n      const target = Store.load()\n      expect(target).toEqual({key:\"value\"})\n    })\n    it('初期は null が返ること', () => {\n      localStorage.getItem.mockReturnValue()\n      const target = Store.load()\n      expect(target).toBeNull()\n    })\n    it('指定した初期値が返ること', () => {\n      localStorage.getItem.mockReturnValue()\n      const target = Store.load('init')\n      expect(target).toBe('init')\n    })\n  })\n})\n",
@@ -975,7 +1019,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 71,
+    "__docId__": 73,
     "kind": "file",
     "name": "src/serviceWorker.js",
     "content": "// This optional code is used to register a service worker.\n// register() is not called by default.\n\n// This lets the app load faster on subsequent visits in production, and gives\n// it offline capabilities. However, it also means that developers (and users)\n// will only see deployed updates on subsequent visits to a page, after all the\n// existing tabs open on the page have been closed, since previously cached\n// resources are updated in the background.\n\n// To learn more about the benefits of this model and instructions on how to\n// opt-in, read https://bit.ly/CRA-PWA\n\nconst isLocalhost = Boolean(\n  window.location.hostname === 'localhost' ||\n    // [::1] is the IPv6 localhost address.\n    window.location.hostname === '[::1]' ||\n    // 127.0.0.0/8 are considered localhost for IPv4.\n    window.location.hostname.match(\n      /^127(?:\\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/\n    )\n);\n\nexport function register(config) {\n  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {\n    // The URL constructor is available in all browsers that support SW.\n    const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);\n    if (publicUrl.origin !== window.location.origin) {\n      // Our service worker won't work if PUBLIC_URL is on a different origin\n      // from what our page is served on. This might happen if a CDN is used to\n      // serve assets; see https://github.com/facebook/create-react-app/issues/2374\n      return;\n    }\n\n    window.addEventListener('load', () => {\n      const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;\n\n      if (isLocalhost) {\n        // This is running on localhost. Let's check if a service worker still exists or not.\n        checkValidServiceWorker(swUrl, config);\n\n        // Add some additional logging to localhost, pointing developers to the\n        // service worker/PWA documentation.\n        navigator.serviceWorker.ready.then(() => {\n          console.log(\n            'This web app is being served cache-first by a service ' +\n              'worker. To learn more, visit https://bit.ly/CRA-PWA'\n          );\n        });\n      } else {\n        // Is not localhost. Just register service worker\n        registerValidSW(swUrl, config);\n      }\n    });\n  }\n}\n\nfunction registerValidSW(swUrl, config) {\n  navigator.serviceWorker\n    .register(swUrl)\n    .then(registration => {\n      registration.onupdatefound = () => {\n        const installingWorker = registration.installing;\n        if (installingWorker == null) {\n          return;\n        }\n        installingWorker.onstatechange = () => {\n          if (installingWorker.state === 'installed') {\n            if (navigator.serviceWorker.controller) {\n              // At this point, the updated precached content has been fetched,\n              // but the previous service worker will still serve the older\n              // content until all client tabs are closed.\n              console.log(\n                'New content is available and will be used when all ' +\n                  'tabs for this page are closed. See https://bit.ly/CRA-PWA.'\n              );\n\n              // Execute callback\n              if (config && config.onUpdate) {\n                config.onUpdate(registration);\n              }\n            } else {\n              // At this point, everything has been precached.\n              // It's the perfect time to display a\n              // \"Content is cached for offline use.\" message.\n              console.log('Content is cached for offline use.');\n\n              // Execute callback\n              if (config && config.onSuccess) {\n                config.onSuccess(registration);\n              }\n            }\n          }\n        };\n      };\n    })\n    .catch(error => {\n      console.error('Error during service worker registration:', error);\n    });\n}\n\nfunction checkValidServiceWorker(swUrl, config) {\n  // Check if the service worker can be found. If it can't reload the page.\n  fetch(swUrl, {\n    headers: { 'Service-Worker': 'script' },\n  })\n    .then(response => {\n      // Ensure service worker exists, and that we really are getting a JS file.\n      const contentType = response.headers.get('content-type');\n      if (\n        response.status === 404 ||\n        (contentType != null && contentType.indexOf('javascript') === -1)\n      ) {\n        // No service worker found. Probably a different app. Reload the page.\n        navigator.serviceWorker.ready.then(registration => {\n          registration.unregister().then(() => {\n            window.location.reload();\n          });\n        });\n      } else {\n        // Service worker found. Proceed as normal.\n        registerValidSW(swUrl, config);\n      }\n    })\n    .catch(() => {\n      console.log(\n        'No internet connection found. App is running in offline mode.'\n      );\n    });\n}\n\nexport function unregister() {\n  if ('serviceWorker' in navigator) {\n    navigator.serviceWorker.ready\n      .then(registration => {\n        registration.unregister();\n      })\n      .catch(error => {\n        console.error(error.message);\n      });\n  }\n}\n",
@@ -986,7 +1030,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 72,
+    "__docId__": 74,
     "kind": "variable",
     "name": "isLocalhost",
     "memberof": "src/serviceWorker.js",
@@ -1007,7 +1051,7 @@
     "ignore": true
   },
   {
-    "__docId__": 73,
+    "__docId__": 75,
     "kind": "function",
     "name": "register",
     "memberof": "src/serviceWorker.js",
@@ -1033,7 +1077,7 @@
     "return": null
   },
   {
-    "__docId__": 74,
+    "__docId__": 76,
     "kind": "function",
     "name": "registerValidSW",
     "memberof": "src/serviceWorker.js",
@@ -1066,7 +1110,7 @@
     "ignore": true
   },
   {
-    "__docId__": 75,
+    "__docId__": 77,
     "kind": "function",
     "name": "checkValidServiceWorker",
     "memberof": "src/serviceWorker.js",
@@ -1099,7 +1143,7 @@
     "ignore": true
   },
   {
-    "__docId__": 76,
+    "__docId__": 78,
     "kind": "function",
     "name": "unregister",
     "memberof": "src/serviceWorker.js",
@@ -1118,7 +1162,7 @@
     "return": null
   },
   {
-    "__docId__": 77,
+    "__docId__": 79,
     "kind": "file",
     "name": "src/setupTests.js",
     "content": "// jest-dom adds custom jest matchers for asserting on DOM nodes.\n// allows you to do things like:\n// expect(element).toHaveTextContent(/react/i)\n// learn more: https://github.com/testing-library/jest-dom\nimport '@testing-library/jest-dom/extend-expect'\nimport 'jest-localstorage-mock'\n",
@@ -1161,7 +1205,7 @@
     "access": "public"
   },
   {
-    "__docId__": 78,
+    "__docId__": 80,
     "kind": "testFile",
     "name": "src/containers/event.spec.js",
     "content": "import React from 'react'\nimport {RecoilRoot} from \"recoil\"\nimport {fireEvent, render, screen} from '@testing-library/react'\nimport {EventContainer} from './event'\n\n/** @test {EventContainer} */\ndescribe('イベントコンテナが動作すること', () => {\n  beforeEach(() => {\n    render(\n      <RecoilRoot>\n        <EventContainer />\n      </RecoilRoot>\n    )\n  })\n  it('イベント名を変更できること', () => {\n    const target = screen.getByLabelText('イベント名')\n    expect(target).toHaveValue('')\n    fireEvent.change(target, {target: {value: '品川アジャイル定例会'}})\n    expect(target).toHaveValue('品川アジャイル定例会')\n  })\n  it('開催地を変更できること', () => {\n    const target = screen.getByLabelText('開催地')\n    expect(target).toHaveValue('')\n    fireEvent.change(target, {target: {value: '東京駅'}})\n    expect(target).toHaveValue('東京駅')\n  })\n  it('localStorage.setItem が呼ばれること', () => {\n    const target = screen.getByDisplayValue('保存')\n    expect(target).toBeInTheDocument()\n    fireEvent.click(target)\n    expect(localStorage.setItem).toBeCalledTimes(1)\n  })\n})\n",
@@ -1172,7 +1216,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 79,
+    "__docId__": 81,
     "kind": "test",
     "name": "describe0",
     "testId": 0,
@@ -1188,7 +1232,7 @@
     ]
   },
   {
-    "__docId__": 80,
+    "__docId__": 82,
     "kind": "test",
     "name": "it1",
     "testId": 1,
@@ -1201,7 +1245,7 @@
     "lineNumber": 15
   },
   {
-    "__docId__": 81,
+    "__docId__": 83,
     "kind": "test",
     "name": "it2",
     "testId": 2,
@@ -1214,7 +1258,7 @@
     "lineNumber": 21
   },
   {
-    "__docId__": 82,
+    "__docId__": 84,
     "kind": "test",
     "name": "it3",
     "testId": 3,
@@ -1227,7 +1271,7 @@
     "lineNumber": 27
   },
   {
-    "__docId__": 83,
+    "__docId__": 85,
     "kind": "testFile",
     "name": "src/l2_ molecules/button_palette.spec.js",
     "content": "import React from 'react'\nimport {render, screen, fireEvent} from '@testing-library/react'\nimport {ButtonPalette} from './button_palette'\n\n/** @test {ButtonPalette} */\ndescribe('ボタンが期待通りに動作すること', () => {\n  const mockClick = jest.fn()\n  let target = null\n  beforeEach(() => {\n    render(<ButtonPalette\n      label         = \"テストボタン\"\n      handleClick   = {mockClick}\n    />)\n    target = screen.getByDisplayValue('テストボタン')\n  })\n  it('ボタンがあること', () => {\n    expect(target).toBeInTheDocument()\n  })\n  it('タイプがボタンであること', () => {\n    expect(target).toHaveAttribute('type', 'button')\n  })\n  it('クリックハンドラーが呼ばれること', () => {\n    fireEvent.click(target)\n    expect(mockClick).toBeCalledTimes(1)\n  })\n})\n",
@@ -1238,7 +1282,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 84,
+    "__docId__": 86,
     "kind": "test",
     "name": "describe4",
     "testId": 4,
@@ -1254,7 +1298,7 @@
     ]
   },
   {
-    "__docId__": 85,
+    "__docId__": 87,
     "kind": "test",
     "name": "it5",
     "testId": 5,
@@ -1267,7 +1311,7 @@
     "lineNumber": 16
   },
   {
-    "__docId__": 86,
+    "__docId__": 88,
     "kind": "test",
     "name": "it6",
     "testId": 6,
@@ -1280,7 +1324,7 @@
     "lineNumber": 19
   },
   {
-    "__docId__": 87,
+    "__docId__": 89,
     "kind": "test",
     "name": "it7",
     "testId": 7,
@@ -1293,7 +1337,7 @@
     "lineNumber": 22
   },
   {
-    "__docId__": 88,
+    "__docId__": 90,
     "kind": "testFile",
     "name": "src/l2_ molecules/labeled_text.spec.js",
     "content": "import React from 'react'\nimport {render, screen, fireEvent} from '@testing-library/react'\nimport {LabeledText} from './labeled_text'\n\n/** @test {LabeledText} */\ndescribe('ラベル付き入力が期待通りに動作すること', () => {\n  const mockChange = jest.fn()\n  let target = null\n  beforeEach(() => {\n    render(<LabeledText\n      id            = \"aaa001\"\n      name          = \"name002\"\n      label         = \"ラベル01\"\n      handleChange  = {mockChange}\n      value         = \"値009\"\n    />)\n    target = screen.getByLabelText('ラベル01')\n  })\n  it('ラベル付きの入力欄があること', () => {\n    expect(target).toBeInTheDocument()\n  })\n  it('テキスト入力欄であること', () => {\n    expect(target).toHaveAttribute('type', 'text')\n  })\n  it('渡した name 設定されること', () => {\n    expect(target).toHaveAttribute('name', 'name002')\n  })\n  it('渡した ID が設定されること', () => {\n    expect(target).toHaveAttribute('id', 'aaa001')\n  })\n  it('渡した値が設定されること', () => {\n    expect(target).toHaveValue('値009')\n  })\n  it('チェンジハンドラーが呼ばれること', () => {\n    fireEvent.change(target, {target: {value: '新しい'}})\n    expect(mockChange).toBeCalledTimes(1)\n  })\n})\n",
@@ -1304,7 +1348,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 89,
+    "__docId__": 91,
     "kind": "test",
     "name": "describe8",
     "testId": 8,
@@ -1320,7 +1364,7 @@
     ]
   },
   {
-    "__docId__": 90,
+    "__docId__": 92,
     "kind": "test",
     "name": "it9",
     "testId": 9,
@@ -1333,7 +1377,7 @@
     "lineNumber": 19
   },
   {
-    "__docId__": 91,
+    "__docId__": 93,
     "kind": "test",
     "name": "it10",
     "testId": 10,
@@ -1346,7 +1390,7 @@
     "lineNumber": 22
   },
   {
-    "__docId__": 92,
+    "__docId__": 94,
     "kind": "test",
     "name": "it11",
     "testId": 11,
@@ -1359,7 +1403,7 @@
     "lineNumber": 25
   },
   {
-    "__docId__": 93,
+    "__docId__": 95,
     "kind": "test",
     "name": "it12",
     "testId": 12,
@@ -1372,7 +1416,7 @@
     "lineNumber": 28
   },
   {
-    "__docId__": 94,
+    "__docId__": 96,
     "kind": "test",
     "name": "it13",
     "testId": 13,
@@ -1385,7 +1429,7 @@
     "lineNumber": 31
   },
   {
-    "__docId__": 95,
+    "__docId__": 97,
     "kind": "test",
     "name": "it14",
     "testId": 14,
@@ -1398,25 +1442,25 @@
     "lineNumber": 34
   },
   {
-    "__docId__": 96,
+    "__docId__": 98,
     "kind": "testFile",
-    "name": "src/l5_pages/event_entry.spec.js",
-    "content": "import React from 'react'\nimport {render, screen} from '@testing-library/react'\nimport {EventEntry} from './event_entry'\n\n/** @test {EventEntry} */\ndescribe('イベント登録フォームが期待通りに動作すること', () => {\n  describe('イベント名入力欄が期待通りに動作すること', () => {\n    let target = null\n    beforeEach(() => {\n      render(<EventEntry\n        id            = \"aaa001\"\n        handleChange  = {jest.fn()}\n        handleSave    = {jest.fn()}\n      />)\n      target = screen.getByLabelText('イベント名')\n    })\n    it('入力欄があること', () => {\n      expect(target).toBeInTheDocument()\n    })\n    it('テキスト入力欄であること', () => {\n      expect(target).toHaveAttribute('type', 'text')\n    })\n  })\n\n  describe('開催地名入力欄が期待通りに動作すること', () => {\n    let target = null\n    beforeEach(() => {\n      render(<EventEntry\n        id            = \"aaa001\"\n        handleChange  = {jest.fn()}\n        handleSave    = {jest.fn()}\n      />)\n      target = screen.getByLabelText('開催地')\n    })\n    it('入力欄があること', () => {\n      expect(target).toBeInTheDocument()\n    })\n    it('テキスト入力欄であること', () => {\n      expect(target).toHaveAttribute('type', 'text')\n    })\n  })\n\n  describe('保存ボタンが期待通りに動作すること', () => {\n    let target = null\n    beforeEach(() => {\n      render(<EventEntry\n        id            = \"aaa001\"\n        handleChange  = {jest.fn()}\n        handleSave    = {jest.fn()}\n      />)\n      target = screen.getByDisplayValue('保存')\n    })\n    it('ボタンがあること', () => {\n      expect(target).toBeInTheDocument()\n    })\n    it('タイプがボタンであること', () => {\n      expect(target).toHaveAttribute('type', 'button')\n    })\n  })\n})\n",
+    "name": "src/l3_organisms/event_entry.spec.js",
+    "content": "import React from 'react'\nimport {render, screen} from '@testing-library/react'\nimport {EventEntry} from './event_enty'\n\n/** @test {EventEntry} */\ndescribe('イベント登録フォームが期待通りに動作すること', () => {\n  describe('イベント名入力欄が期待通りに動作すること', () => {\n    let target = null\n    beforeEach(() => {\n      render(<EventEntry\n        id            = \"aaa001\"\n        handleChange  = {jest.fn()}\n        handleSave    = {jest.fn()}\n      />)\n      target = screen.getByLabelText('イベント名')\n    })\n    it('入力欄があること', () => {\n      expect(target).toBeInTheDocument()\n    })\n    it('テキスト入力欄であること', () => {\n      expect(target).toHaveAttribute('type', 'text')\n    })\n  })\n\n  describe('開催地名入力欄が期待通りに動作すること', () => {\n    let target = null\n    beforeEach(() => {\n      render(<EventEntry\n        id            = \"aaa001\"\n        handleChange  = {jest.fn()}\n        handleSave    = {jest.fn()}\n      />)\n      target = screen.getByLabelText('開催地')\n    })\n    it('入力欄があること', () => {\n      expect(target).toBeInTheDocument()\n    })\n    it('テキスト入力欄であること', () => {\n      expect(target).toHaveAttribute('type', 'text')\n    })\n  })\n\n  describe('保存ボタンが期待通りに動作すること', () => {\n    let target = null\n    beforeEach(() => {\n      render(<EventEntry\n        id            = \"aaa001\"\n        handleChange  = {jest.fn()}\n        handleSave    = {jest.fn()}\n      />)\n      target = screen.getByDisplayValue('保存')\n    })\n    it('ボタンがあること', () => {\n      expect(target).toBeInTheDocument()\n    })\n    it('タイプがボタンであること', () => {\n      expect(target).toHaveAttribute('type', 'button')\n    })\n  })\n})\n",
     "static": true,
-    "longname": "/home/runner/work/tomeet/tomeet/src/l5_pages/event_entry.spec.js",
+    "longname": "/home/runner/work/tomeet/tomeet/src/l3_organisms/event_entry.spec.js",
     "access": null,
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 97,
+    "__docId__": 99,
     "kind": "test",
     "name": "describe15",
     "testId": 15,
-    "memberof": "src/l5_pages/event_entry.spec.js",
+    "memberof": "src/l3_organisms/event_entry.spec.js",
     "testDepth": 0,
     "static": true,
-    "longname": "src/l5_pages/event_entry.spec.js~describe15",
+    "longname": "src/l3_organisms/event_entry.spec.js~describe15",
     "access": null,
     "description": "イベント登録フォームが期待通りに動作すること",
     "lineNumber": 6,
@@ -1425,124 +1469,124 @@
     ]
   },
   {
-    "__docId__": 98,
+    "__docId__": 100,
     "kind": "test",
     "name": "describe16",
     "testId": 16,
-    "memberof": "src/l5_pages/event_entry.spec.js~describe15",
+    "memberof": "src/l3_organisms/event_entry.spec.js~describe15",
     "testDepth": 1,
     "static": true,
-    "longname": "src/l5_pages/event_entry.spec.js~describe15.describe16",
+    "longname": "src/l3_organisms/event_entry.spec.js~describe15.describe16",
     "access": null,
     "description": "イベント名入力欄が期待通りに動作すること",
     "lineNumber": 7
   },
   {
-    "__docId__": 99,
+    "__docId__": 101,
     "kind": "test",
     "name": "it17",
     "testId": 17,
-    "memberof": "src/l5_pages/event_entry.spec.js~describe15.describe16",
+    "memberof": "src/l3_organisms/event_entry.spec.js~describe15.describe16",
     "testDepth": 2,
     "static": true,
-    "longname": "src/l5_pages/event_entry.spec.js~describe15.describe16.it17",
+    "longname": "src/l3_organisms/event_entry.spec.js~describe15.describe16.it17",
     "access": null,
     "description": "入力欄があること",
     "lineNumber": 17
   },
   {
-    "__docId__": 100,
+    "__docId__": 102,
     "kind": "test",
     "name": "it18",
     "testId": 18,
-    "memberof": "src/l5_pages/event_entry.spec.js~describe15.describe16",
+    "memberof": "src/l3_organisms/event_entry.spec.js~describe15.describe16",
     "testDepth": 2,
     "static": true,
-    "longname": "src/l5_pages/event_entry.spec.js~describe15.describe16.it18",
+    "longname": "src/l3_organisms/event_entry.spec.js~describe15.describe16.it18",
     "access": null,
     "description": "テキスト入力欄であること",
     "lineNumber": 20
   },
   {
-    "__docId__": 101,
+    "__docId__": 103,
     "kind": "test",
     "name": "describe19",
     "testId": 19,
-    "memberof": "src/l5_pages/event_entry.spec.js~describe15",
+    "memberof": "src/l3_organisms/event_entry.spec.js~describe15",
     "testDepth": 1,
     "static": true,
-    "longname": "src/l5_pages/event_entry.spec.js~describe15.describe19",
+    "longname": "src/l3_organisms/event_entry.spec.js~describe15.describe19",
     "access": null,
     "description": "開催地名入力欄が期待通りに動作すること",
     "lineNumber": 25
   },
   {
-    "__docId__": 102,
+    "__docId__": 104,
     "kind": "test",
     "name": "it20",
     "testId": 20,
-    "memberof": "src/l5_pages/event_entry.spec.js~describe15.describe19",
+    "memberof": "src/l3_organisms/event_entry.spec.js~describe15.describe19",
     "testDepth": 2,
     "static": true,
-    "longname": "src/l5_pages/event_entry.spec.js~describe15.describe19.it20",
+    "longname": "src/l3_organisms/event_entry.spec.js~describe15.describe19.it20",
     "access": null,
     "description": "入力欄があること",
     "lineNumber": 35
   },
   {
-    "__docId__": 103,
+    "__docId__": 105,
     "kind": "test",
     "name": "it21",
     "testId": 21,
-    "memberof": "src/l5_pages/event_entry.spec.js~describe15.describe19",
+    "memberof": "src/l3_organisms/event_entry.spec.js~describe15.describe19",
     "testDepth": 2,
     "static": true,
-    "longname": "src/l5_pages/event_entry.spec.js~describe15.describe19.it21",
+    "longname": "src/l3_organisms/event_entry.spec.js~describe15.describe19.it21",
     "access": null,
     "description": "テキスト入力欄であること",
     "lineNumber": 38
   },
   {
-    "__docId__": 104,
+    "__docId__": 106,
     "kind": "test",
     "name": "describe22",
     "testId": 22,
-    "memberof": "src/l5_pages/event_entry.spec.js~describe15",
+    "memberof": "src/l3_organisms/event_entry.spec.js~describe15",
     "testDepth": 1,
     "static": true,
-    "longname": "src/l5_pages/event_entry.spec.js~describe15.describe22",
+    "longname": "src/l3_organisms/event_entry.spec.js~describe15.describe22",
     "access": null,
     "description": "保存ボタンが期待通りに動作すること",
     "lineNumber": 43
   },
   {
-    "__docId__": 105,
+    "__docId__": 107,
     "kind": "test",
     "name": "it23",
     "testId": 23,
-    "memberof": "src/l5_pages/event_entry.spec.js~describe15.describe22",
+    "memberof": "src/l3_organisms/event_entry.spec.js~describe15.describe22",
     "testDepth": 2,
     "static": true,
-    "longname": "src/l5_pages/event_entry.spec.js~describe15.describe22.it23",
+    "longname": "src/l3_organisms/event_entry.spec.js~describe15.describe22.it23",
     "access": null,
     "description": "ボタンがあること",
     "lineNumber": 53
   },
   {
-    "__docId__": 106,
+    "__docId__": 108,
     "kind": "test",
     "name": "it24",
     "testId": 24,
-    "memberof": "src/l5_pages/event_entry.spec.js~describe15.describe22",
+    "memberof": "src/l3_organisms/event_entry.spec.js~describe15.describe22",
     "testDepth": 2,
     "static": true,
-    "longname": "src/l5_pages/event_entry.spec.js~describe15.describe22.it24",
+    "longname": "src/l3_organisms/event_entry.spec.js~describe15.describe22.it24",
     "access": null,
     "description": "タイプがボタンであること",
     "lineNumber": 56
   },
   {
-    "__docId__": 107,
+    "__docId__": 109,
     "kind": "testFile",
     "name": "src/modules/store.spec.js",
     "content": "import {Store} from './store'\n\n/** @test {Store} */\ndescribe('Store が期待通りに動作すること', () => {\n  /** @test {Store#save} */\n  describe('セーブが行われること', () => {\n    beforeEach(() => {\n      Store.save({'key':'value'})\n    })\n    it('setItem が呼び出されること', () => {\n      expect(localStorage.setItem).toBeCalledTimes(1)\n    })\n    it('パラメータが JSON であること', () => {\n      expect(localStorage.setItem).toBeCalledWith('event', '{\"key\":\"value\"}')\n    })\n  })\n\n  /** @test {Store#load} */\n  describe('ロードが行われること', () => {\n    it('getItem が呼び出されること', () => {\n      Store.load()\n      expect(localStorage.getItem).toBeCalledTimes(1)\n    })\n    it('JSON をパースしたオブジェクトが返ること', () => {\n      localStorage.getItem.mockReturnValue('{\"key\":\"value\"}')\n      const target = Store.load()\n      expect(target).toEqual({key:\"value\"})\n    })\n    it('初期は null が返ること', () => {\n      localStorage.getItem.mockReturnValue()\n      const target = Store.load()\n      expect(target).toBeNull()\n    })\n    it('指定した初期値が返ること', () => {\n      localStorage.getItem.mockReturnValue()\n      const target = Store.load('init')\n      expect(target).toBe('init')\n    })\n  })\n})\n",
@@ -1553,7 +1597,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 108,
+    "__docId__": 110,
     "kind": "test",
     "name": "describe25",
     "testId": 25,
@@ -1569,7 +1613,7 @@
     ]
   },
   {
-    "__docId__": 109,
+    "__docId__": 111,
     "kind": "test",
     "name": "describe26",
     "testId": 26,
@@ -1585,7 +1629,7 @@
     ]
   },
   {
-    "__docId__": 110,
+    "__docId__": 112,
     "kind": "test",
     "name": "it27",
     "testId": 27,
@@ -1598,7 +1642,7 @@
     "lineNumber": 10
   },
   {
-    "__docId__": 111,
+    "__docId__": 113,
     "kind": "test",
     "name": "it28",
     "testId": 28,
@@ -1611,7 +1655,7 @@
     "lineNumber": 13
   },
   {
-    "__docId__": 112,
+    "__docId__": 114,
     "kind": "test",
     "name": "describe29",
     "testId": 29,
@@ -1627,7 +1671,7 @@
     ]
   },
   {
-    "__docId__": 113,
+    "__docId__": 115,
     "kind": "test",
     "name": "it30",
     "testId": 30,
@@ -1640,7 +1684,7 @@
     "lineNumber": 20
   },
   {
-    "__docId__": 114,
+    "__docId__": 116,
     "kind": "test",
     "name": "it31",
     "testId": 31,
@@ -1653,7 +1697,7 @@
     "lineNumber": 24
   },
   {
-    "__docId__": 115,
+    "__docId__": 117,
     "kind": "test",
     "name": "it32",
     "testId": 32,
@@ -1666,7 +1710,7 @@
     "lineNumber": 29
   },
   {
-    "__docId__": 116,
+    "__docId__": 118,
     "kind": "test",
     "name": "it33",
     "testId": 33,

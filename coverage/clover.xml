@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1607588348615" clover="3.2.0">
-  <project timestamp="1607588348615" name="All files">
-    <metrics statements="66" coveredstatements="24" conditionals="35" coveredconditionals="3" methods="26" coveredmethods="9" elements="127" coveredelements="36" complexity="0" loc="66" ncloc="66" packages="5" files="8" classes="8"/>
+<coverage generated="1607857362177" clover="3.2.0">
+  <project timestamp="1607857362177" name="All files">
+    <metrics statements="68" coveredstatements="26" conditionals="35" coveredconditionals="3" methods="27" coveredmethods="10" elements="130" coveredelements="39" complexity="0" loc="68" ncloc="68" packages="6" files="9" classes="9"/>
     <package name="src">
       <metrics statements="42" coveredstatements="0" conditionals="32" coveredconditionals="0" methods="17" coveredmethods="0"/>
       <file name="App.js" path="/home/runner/work/tomeet/tomeet/src/App.js">
@@ -88,13 +88,21 @@
         <line num="20" count="3" type="stmt"/>
       </file>
     </package>
-    <package name="src.l5_pages">
+    <package name="src.l3_organisms">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="event_entry.js" path="/home/runner/work/tomeet/tomeet/src/l5_pages/event_entry.js">
+      <file name="event_enty.js" path="/home/runner/work/tomeet/tomeet/src/l3_organisms/event_enty.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="5" count="2" type="stmt"/>
         <line num="12" count="2" type="stmt"/>
         <line num="13" count="14" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.l5_pages">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="event_page.js" path="/home/runner/work/tomeet/tomeet/src/l5_pages/event_page.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="8" type="stmt"/>
       </file>
     </package>
     <package name="src.modules">

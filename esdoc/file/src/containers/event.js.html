@@ -35,7 +35,8 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#containers">containers</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-EventContainer">EventContainer</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#l2--molecules">l2_ molecules</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ButtonPalette">ButtonPalette</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-LabeledText">LabeledText</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#l5-pages">l5_pages</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-EventEntry">EventEntry</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#l3-organisms">l3_organisms</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-EventEntry">EventEntry</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#l5-pages">l5_pages</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-EventPage">EventPage</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#modules">modules</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Store">Store</a></span></span></li>
 </ul>
 </div>
@@ -44,7 +45,7 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/containers/event.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {atom, useRecoilState} from &apos;recoil&apos;
 
-import {EventEntry} from &apos;../l5_pages/event_entry&apos;
+import {EventPage} from &apos;../l5_pages/event_page&apos;
 import {Store} from &apos;../modules/store&apos;
 
 const init = () =&gt; {
@@ -70,7 +71,7 @@ export const EventContainer = props =&gt; {
   }
 
   return (
-    &lt;EventEntry
+    &lt;EventPage
       title         = {event.title}
       place         = {event.place}
       handleChange  = {handle.change}

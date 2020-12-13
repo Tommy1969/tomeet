@@ -94,7 +94,7 @@
   <div class="row">
     <textarea id="file-source" class="col-md-12">import {atom, useRecoilState} from &#039;recoil&#039;
 
-import {EventEntry} from &#039;../l5_pages/event_entry&#039;
+import {EventPage} from &#039;../l5_pages/event_page&#039;
 import {Store} from &#039;../modules/store&#039;
 
 const init = () =&gt; {
@@ -120,7 +120,7 @@ export const EventContainer = props =&gt; {
   }
 
   return (
-    &lt;EventEntry
+    &lt;EventPage
       title         = {event.title}
       place         = {event.place}
       handleChange  = {handle.change}
