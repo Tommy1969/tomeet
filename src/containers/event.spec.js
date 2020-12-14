@@ -24,10 +24,10 @@ describe('イベントコンテナが動作すること', () => {
     fireEvent.change(target, {target: {value: '東京駅'}})
     expect(target).toHaveValue('東京駅')
   })
-  it('localStorage.setItem が呼ばれること', () => {
+  it('保存ボタン押下でデータが保存されること', () => {
     const target = screen.getByDisplayValue('保存')
     expect(target).toBeInTheDocument()
     fireEvent.click(target)
-    expect(localStorage.setItem).toBeCalledTimes(1)
+    expect(localStorage.getItem('event')).toEqual('{"title":"","place":""}')
   })
 })
