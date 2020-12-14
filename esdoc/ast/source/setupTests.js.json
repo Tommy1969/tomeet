@@ -1,28 +1,28 @@
 {
   "type": "File",
   "start": 0,
-  "end": 286,
+  "end": 364,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 7,
+      "line": 9,
       "column": 0
     }
   },
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 286,
+    "end": 364,
     "loc": {
       "start": {
         "line": 1,
         "column": 0
       },
       "end": {
-        "line": 7,
+        "line": 9,
         "column": 0
       }
     },
@@ -134,7 +134,7 @@
       {
         "type": "ImportDeclaration",
         "start": 254,
-        "end": 285,
+        "end": 300,
         "loc": {
           "start": {
             "line": 6,
@@ -142,29 +142,214 @@
           },
           "end": {
             "line": 6,
-            "column": 31
+            "column": 46
           }
         },
-        "specifiers": [],
+        "specifiers": [
+          {
+            "type": "ImportSpecifier",
+            "start": 262,
+            "end": 274,
+            "loc": {
+              "start": {
+                "line": 6,
+                "column": 8
+              },
+              "end": {
+                "line": 6,
+                "column": 20
+              }
+            },
+            "imported": {
+              "type": "Identifier",
+              "start": 262,
+              "end": 274,
+              "loc": {
+                "start": {
+                  "line": 6,
+                  "column": 8
+                },
+                "end": {
+                  "line": 6,
+                  "column": 20
+                },
+                "identifierName": "LocalStorage"
+              },
+              "name": "LocalStorage"
+            },
+            "local": {
+              "type": "Identifier",
+              "start": 262,
+              "end": 274,
+              "loc": {
+                "start": {
+                  "line": 6,
+                  "column": 8
+                },
+                "end": {
+                  "line": 6,
+                  "column": 20
+                },
+                "identifierName": "LocalStorage"
+              },
+              "name": "LocalStorage"
+            }
+          }
+        ],
         "source": {
           "type": "StringLiteral",
-          "start": 261,
-          "end": 285,
+          "start": 281,
+          "end": 300,
           "loc": {
             "start": {
               "line": 6,
-              "column": 7
+              "column": 27
             },
             "end": {
               "line": 6,
-              "column": 31
+              "column": 46
             }
           },
           "extra": {
-            "rawValue": "jest-localstorage-mock",
-            "raw": "'jest-localstorage-mock'"
+            "rawValue": "node-localstorage",
+            "raw": "\"node-localstorage\""
           },
-          "value": "jest-localstorage-mock"
+          "value": "node-localstorage"
+        }
+      },
+      {
+        "type": "ExpressionStatement",
+        "start": 302,
+        "end": 363,
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 0
+          },
+          "end": {
+            "line": 8,
+            "column": 61
+          }
+        },
+        "expression": {
+          "type": "AssignmentExpression",
+          "start": 302,
+          "end": 363,
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 0
+            },
+            "end": {
+              "line": 8,
+              "column": 61
+            }
+          },
+          "operator": "=",
+          "left": {
+            "type": "MemberExpression",
+            "start": 302,
+            "end": 321,
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 0
+              },
+              "end": {
+                "line": 8,
+                "column": 19
+              }
+            },
+            "object": {
+              "type": "Identifier",
+              "start": 302,
+              "end": 308,
+              "loc": {
+                "start": {
+                  "line": 8,
+                  "column": 0
+                },
+                "end": {
+                  "line": 8,
+                  "column": 6
+                },
+                "identifierName": "global"
+              },
+              "name": "global"
+            },
+            "property": {
+              "type": "Identifier",
+              "start": 309,
+              "end": 321,
+              "loc": {
+                "start": {
+                  "line": 8,
+                  "column": 7
+                },
+                "end": {
+                  "line": 8,
+                  "column": 19
+                },
+                "identifierName": "localStorage"
+              },
+              "name": "localStorage"
+            },
+            "computed": false
+          },
+          "right": {
+            "type": "NewExpression",
+            "start": 324,
+            "end": 363,
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 22
+              },
+              "end": {
+                "line": 8,
+                "column": 61
+              }
+            },
+            "callee": {
+              "type": "Identifier",
+              "start": 328,
+              "end": 340,
+              "loc": {
+                "start": {
+                  "line": 8,
+                  "column": 26
+                },
+                "end": {
+                  "line": 8,
+                  "column": 38
+                },
+                "identifierName": "LocalStorage"
+              },
+              "name": "LocalStorage"
+            },
+            "arguments": [
+              {
+                "type": "StringLiteral",
+                "start": 341,
+                "end": 362,
+                "loc": {
+                  "start": {
+                    "line": 8,
+                    "column": 39
+                  },
+                  "end": {
+                    "line": 8,
+                    "column": 60
+                  }
+                },
+                "extra": {
+                  "rawValue": "./mock/localstorage",
+                  "raw": "'./mock/localstorage'"
+                },
+                "value": "./mock/localstorage"
+              }
+            ]
+          }
         }
       }
     ],
@@ -386,6 +571,108 @@
     },
     {
       "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 261,
+      "end": 262,
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 7
+        },
+        "end": {
+          "line": 6,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "LocalStorage",
+      "start": 262,
+      "end": 274,
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 8
+        },
+        "end": {
+          "line": 6,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 274,
+      "end": 275,
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 20
+        },
+        "end": {
+          "line": 6,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "from",
+      "start": 276,
+      "end": 280,
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 22
+        },
+        "end": {
+          "line": 6,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": {
         "label": "string",
         "beforeExpr": false,
         "startsExpr": true,
@@ -397,17 +684,253 @@
         "binop": null,
         "updateContext": null
       },
-      "value": "jest-localstorage-mock",
-      "start": 261,
-      "end": 285,
+      "value": "node-localstorage",
+      "start": 281,
+      "end": 300,
       "loc": {
         "start": {
           "line": 6,
-          "column": 7
+          "column": 27
         },
         "end": {
           "line": 6,
-          "column": 31
+          "column": 46
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "global",
+      "start": 302,
+      "end": 308,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ".",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 308,
+      "end": 309,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 6
+        },
+        "end": {
+          "line": 8,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "localStorage",
+      "start": 309,
+      "end": 321,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 7
+        },
+        "end": {
+          "line": 8,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "=",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": true,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "=",
+      "start": 322,
+      "end": 323,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 20
+        },
+        "end": {
+          "line": 8,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "new",
+        "keyword": "new",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "new",
+      "start": 324,
+      "end": 327,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 22
+        },
+        "end": {
+          "line": 8,
+          "column": 25
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "LocalStorage",
+      "start": 328,
+      "end": 340,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 26
+        },
+        "end": {
+          "line": 8,
+          "column": 38
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "(",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 340,
+      "end": 341,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 38
+        },
+        "end": {
+          "line": 8,
+          "column": 39
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "./mock/localstorage",
+      "start": 341,
+      "end": 362,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 39
+        },
+        "end": {
+          "line": 8,
+          "column": 60
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ")",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 362,
+      "end": 363,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 60
+        },
+        "end": {
+          "line": 8,
+          "column": 61
         }
       }
     },
@@ -424,15 +947,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 286,
-      "end": 286,
+      "start": 364,
+      "end": 364,
       "loc": {
         "start": {
-          "line": 7,
+          "line": 9,
           "column": 0
         },
         "end": {
-          "line": 7,
+          "line": 9,
           "column": 0
         }
       }

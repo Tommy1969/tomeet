@@ -48,7 +48,9 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import &apos;@testing-library/jest-dom/extend-expect&apos;
-import &apos;jest-localstorage-mock&apos;
+import {LocalStorage} from &quot;node-localstorage&quot;
+
+global.localStorage = new LocalStorage(&apos;./mock/localstorage&apos;)
 </code></pre>
 
 </div>

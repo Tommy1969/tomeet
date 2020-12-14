@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1607857362177" clover="3.2.0">
-  <project timestamp="1607857362177" name="All files">
+<coverage generated="1607935918716" clover="3.2.0">
+  <project timestamp="1607935918716" name="All files">
     <metrics statements="68" coveredstatements="26" conditionals="35" coveredconditionals="3" methods="27" coveredmethods="10" elements="130" coveredelements="39" complexity="0" loc="68" ncloc="68" packages="6" files="9" classes="9"/>
     <package name="src">
       <metrics statements="42" coveredstatements="0" conditionals="32" coveredconditionals="0" methods="17" coveredmethods="0"/>
@@ -110,9 +110,9 @@
       <file name="store.js" path="/home/runner/work/tomeet/tomeet/src/modules/store.js">
         <metrics statements="4" coveredstatements="4" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
         <line num="1" count="2" type="stmt"/>
-        <line num="4" count="3" type="stmt"/>
-        <line num="7" count="5" type="stmt"/>
-        <line num="8" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="8" count="4" type="cond" truecount="2" falsecount="0"/>
       </file>
     </package>
   </project>

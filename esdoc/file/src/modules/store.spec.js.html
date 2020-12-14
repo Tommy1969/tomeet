@@ -47,40 +47,21 @@
 
 /** @test {Store} */
 describe(&apos;Store &#x304C;&#x671F;&#x5F85;&#x901A;&#x308A;&#x306B;&#x52D5;&#x4F5C;&#x3059;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
-  /** @test {Store#save} */
-  describe(&apos;&#x30BB;&#x30FC;&#x30D6;&#x304C;&#x884C;&#x308F;&#x308C;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
-    beforeEach(() =&gt; {
-      Store.save({&apos;key&apos;:&apos;value&apos;})
-    })
-    it(&apos;setItem &#x304C;&#x547C;&#x3073;&#x51FA;&#x3055;&#x308C;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
-      expect(localStorage.setItem).toBeCalledTimes(1)
-    })
-    it(&apos;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x304C; JSON &#x3067;&#x3042;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
-      expect(localStorage.setItem).toBeCalledWith(&apos;event&apos;, &apos;{&quot;key&quot;:&quot;value&quot;}&apos;)
-    })
+  beforeEach(() =&gt; {
+    localStorage.clear()
   })
-
-  /** @test {Store#load} */
-  describe(&apos;&#x30ED;&#x30FC;&#x30C9;&#x304C;&#x884C;&#x308F;&#x308C;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
-    it(&apos;getItem &#x304C;&#x547C;&#x3073;&#x51FA;&#x3055;&#x308C;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
-      Store.load()
-      expect(localStorage.getItem).toBeCalledTimes(1)
-    })
-    it(&apos;JSON &#x3092;&#x30D1;&#x30FC;&#x30B9;&#x3057;&#x305F;&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x304C;&#x8FD4;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
-      localStorage.getItem.mockReturnValue(&apos;{&quot;key&quot;:&quot;value&quot;}&apos;)
-      const target = Store.load()
-      expect(target).toEqual({key:&quot;value&quot;})
-    })
-    it(&apos;&#x521D;&#x671F;&#x306F; null &#x304C;&#x8FD4;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
-      localStorage.getItem.mockReturnValue()
-      const target = Store.load()
-      expect(target).toBeNull()
-    })
-    it(&apos;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x521D;&#x671F;&#x5024;&#x304C;&#x8FD4;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
-      localStorage.getItem.mockReturnValue()
-      const target = Store.load(&apos;init&apos;)
-      expect(target).toBe(&apos;init&apos;)
-    })
+  it(&apos;&#x521D;&#x671F;&#x306F; null &#x304C;&#x8FD4;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
+    const target = Store.load()
+    expect(target).toBeNull()
+  })
+  it(&apos;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x521D;&#x671F;&#x5024;&#x304C;&#x8FD4;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
+    const target = Store.load(&apos;init&apos;)
+    expect(target).toBe(&apos;init&apos;)
+  })
+  it(&apos;&#x4FDD;&#x5B58;&#x3057;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30ED;&#x30FC;&#x30C9;&#x3067;&#x304D;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
+    Store.save({key:&apos;value&apos;})
+    const target = Store.load()
+    expect(target).toEqual({key:&quot;value&quot;})
   })
 })
 </code></pre>

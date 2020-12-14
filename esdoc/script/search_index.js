@@ -60,51 +60,21 @@ window.esdocSearchIndex = [
     "test"
   ],
   [
-    "store#save store#save,store#save",
-    "test-file/src/modules/store.spec.js.html#lineNumber6",
-    "Store が期待通りに動作すること セーブが行われること",
+    "",
+    "test-file/src/modules/store.spec.js.html#lineNumber16",
+    "Store が期待通りに動作すること 保存したデータをロードできること",
     "test"
   ],
   [
     "",
-    "test-file/src/modules/store.spec.js.html#lineNumber10",
-    "Store が期待通りに動作すること セーブが行われること setItem が呼び出されること",
+    "test-file/src/modules/store.spec.js.html#lineNumber8",
+    "Store が期待通りに動作すること 初期は null が返ること",
     "test"
   ],
   [
     "",
-    "test-file/src/modules/store.spec.js.html#lineNumber13",
-    "Store が期待通りに動作すること セーブが行われること パラメータが JSON であること",
-    "test"
-  ],
-  [
-    "store#load store#load,store#load",
-    "test-file/src/modules/store.spec.js.html#lineNumber19",
-    "Store が期待通りに動作すること ロードが行われること",
-    "test"
-  ],
-  [
-    "",
-    "test-file/src/modules/store.spec.js.html#lineNumber24",
-    "Store が期待通りに動作すること ロードが行われること JSON をパースしたオブジェクトが返ること",
-    "test"
-  ],
-  [
-    "",
-    "test-file/src/modules/store.spec.js.html#lineNumber20",
-    "Store が期待通りに動作すること ロードが行われること getItem が呼び出されること",
-    "test"
-  ],
-  [
-    "",
-    "test-file/src/modules/store.spec.js.html#lineNumber29",
-    "Store が期待通りに動作すること ロードが行われること 初期は null が返ること",
-    "test"
-  ],
-  [
-    "",
-    "test-file/src/modules/store.spec.js.html#lineNumber34",
-    "Store が期待通りに動作すること ロードが行われること 指定した初期値が返ること",
+    "test-file/src/modules/store.spec.js.html#lineNumber12",
+    "Store が期待通りに動作すること 指定した初期値が返ること",
     "test"
   ],
   [
@@ -517,14 +487,14 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/src/containers/event.spec.js.html#lineNumber27",
-    "イベントコンテナが動作すること localStorage.setItem が呼ばれること",
+    "test-file/src/containers/event.spec.js.html#lineNumber15",
+    "イベントコンテナが動作すること イベント名を変更できること",
     "test"
   ],
   [
     "",
-    "test-file/src/containers/event.spec.js.html#lineNumber15",
-    "イベントコンテナが動作すること イベント名を変更できること",
+    "test-file/src/containers/event.spec.js.html#lineNumber27",
+    "イベントコンテナが動作すること 保存ボタン押下でデータが保存されること",
     "test"
   ],
   [
