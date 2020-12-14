@@ -1,6 +1,6 @@
 {
   "coverage": "0%",
-  "expectCount": 17,
+  "expectCount": 19,
   "actualCount": 0,
   "files": {
     "src/App.js": {
@@ -35,7 +35,7 @@
         9
       ]
     },
-    "src/l3_organisms/event_enty.js": {
+    "src/l3_organisms/event_entry.js": {
       "expectCount": 2,
       "actualCount": 0,
       "undocumentLines": [
@@ -43,7 +43,15 @@
         12
       ]
     },
-    "src/l5_pages/event_page.js": {
+    "src/l3_organisms/event_list.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        11
+      ]
+    },
+    "src/l3_organisms/event_list.spec.js": {
       "expectCount": 1,
       "actualCount": 0,
       "undocumentLines": [
