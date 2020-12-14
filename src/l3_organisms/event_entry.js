@@ -10,7 +10,7 @@ const FieldSet = styled.fieldset`
 `
 
 export const EventEntry = ({id, title, place, ...props}) =>
-  <FieldSet>
+  <FieldSet data-testid="event_entry">
     <legend>イベント登録</legend>
     <LabeledText
       id            = {id+'_title'}

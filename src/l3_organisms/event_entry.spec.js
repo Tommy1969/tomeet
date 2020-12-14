@@ -1,6 +1,6 @@
 import React from 'react'
 import {render, screen} from '@testing-library/react'
-import {EventEntry} from './event_enty'
+import {EventEntry} from './event_entry'
 
 /** @test {EventEntry} */
 describe('イベント登録フォームが期待通りに動作すること', () => {
