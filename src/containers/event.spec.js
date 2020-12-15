@@ -1,4 +1,3 @@
-import React from 'react'
 import {RecoilRoot} from "recoil"
 import {fireEvent, render, screen} from '@testing-library/react'
 import {EventContainer} from './event'
@@ -28,6 +27,6 @@ describe('イベントコンテナが動作すること', () => {
     const target = screen.getByDisplayValue('保存')
     expect(target).toBeInTheDocument()
     fireEvent.click(target)
-    expect(localStorage.getItem('event')).toEqual('{"title":"","place":""}')
+    expect(localStorage.getItem('event')).toEqual('[{"title":"","place":""}]')
   })
 })
