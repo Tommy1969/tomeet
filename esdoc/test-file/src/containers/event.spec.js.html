@@ -43,8 +43,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/containers/event.spec.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React from &apos;react&apos;
-import {RecoilRoot} from &quot;recoil&quot;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {RecoilRoot} from &quot;recoil&quot;
 import {fireEvent, render, screen} from &apos;@testing-library/react&apos;
 import {EventContainer} from &apos;./event&apos;
 
@@ -73,7 +72,7 @@ describe(&apos;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&
     const target = screen.getByDisplayValue(&apos;&#x4FDD;&#x5B58;&apos;)
     expect(target).toBeInTheDocument()
     fireEvent.click(target)
-    expect(localStorage.getItem(&apos;event&apos;)).toEqual(&apos;{&quot;title&quot;:&quot;&quot;,&quot;place&quot;:&quot;&quot;}&apos;)
+    expect(localStorage.getItem(&apos;event&apos;)).toEqual(&apos;[{&quot;title&quot;:&quot;&quot;,&quot;place&quot;:&quot;&quot;}]&apos;)
   })
 })
 </code></pre>

@@ -44,36 +44,41 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/containers/event.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {atom, useRecoilState} from &apos;recoil&apos;
-
 import {EventPage} from &apos;../l5_pages/event_page&apos;
 import {Store} from &apos;../modules/store&apos;
 
-const init = () =&gt; {
-  return Store.load({title: &apos;&apos;, place: &apos;&apos;})
-}
-
 const eventState = atom({
   key:                  &apos;eventState&apos;,
-  default:              init(),
+  default:              {
+    title: &apos;&apos;,
+    place: &apos;&apos;,
+    events: Store.load([])
+  },
   persistence_UNSTABLE: {type: &apos;log&apos;}
 })
 
 export const EventContainer = props =&gt; {
-  const [event, setEvent] = useRecoilState(eventState)
+  const [state, setState] = useRecoilState(eventState)
 
   const handle = {
     change: e =&gt; {
-      setEvent({...event, [e.target.name]: e.target.value})
+      setState({...state, [e.target.name]: e.target.value})
     },
     save: e =&gt; {
-      Store.save(event)
+      const events = [...state.events, {
+        title: state.title,
+        place: state.place
+      }]
+      setState({...state, events: events})
+      Store.save(events)
     }
   }
 
   return (
     &lt;EventPage
-      title         = {event.title}
-      place         = {event.place}
+      title         = {state.title}
+      place         = {state.place}
+      events        = {state.events}
       handleChange  = {handle.change}
       handleSave    = {handle.save}
     /&gt;
