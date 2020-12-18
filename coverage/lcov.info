@@ -134,7 +134,7 @@ BRF:32
 BRH:0
 end_of_record
 TN:
-SF:src/containers/event.js
+SF:src/containers/event.jsx
 FN:15,(anonymous_0)
 FN:19,(anonymous_1)
 FN:22,(anonymous_2)
@@ -158,7 +158,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/l2_ molecules/button_palette.js
+SF:src/l2_ molecules/button_palette.jsx
 FN:8,(anonymous_0)
 FNF:1
 FNH:1
@@ -173,7 +173,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/l2_ molecules/labeled_text.js
+SF:src/l2_ molecules/labeled_text.jsx
 FN:9,(anonymous_0)
 FNF:1
 FNH:1
@@ -188,7 +188,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/l3_organisms/event_entry.js
+SF:src/l3_organisms/event_entry.jsx
 FN:12,(anonymous_0)
 FNF:1
 FNH:1
@@ -202,7 +202,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/l3_organisms/event_list.js
+SF:src/l3_organisms/event_list.jsx
 FN:11,(anonymous_0)
 FN:14,(anonymous_1)
 FNF:2
@@ -221,7 +221,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:src/l5_pages/event_page.js
+SF:src/l5_pages/event_page.jsx
 FN:5,(anonymous_0)
 FNF:1
 FNH:1

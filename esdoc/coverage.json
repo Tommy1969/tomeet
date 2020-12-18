@@ -1,6 +1,6 @@
 {
   "coverage": "0%",
-  "expectCount": 18,
+  "expectCount": 8,
   "actualCount": 0,
   "files": {
     "src/App.js": {
@@ -8,46 +8,6 @@
       "actualCount": 0,
       "undocumentLines": [
         6
-      ]
-    },
-    "src/containers/event.js": {
-      "expectCount": 2,
-      "actualCount": 0,
-      "undocumentLines": [
-        5,
-        15
-      ]
-    },
-    "src/l2_ molecules/button_palette.js": {
-      "expectCount": 2,
-      "actualCount": 0,
-      "undocumentLines": [
-        4,
-        8
-      ]
-    },
-    "src/l2_ molecules/labeled_text.js": {
-      "expectCount": 2,
-      "actualCount": 0,
-      "undocumentLines": [
-        4,
-        9
-      ]
-    },
-    "src/l3_organisms/event_entry.js": {
-      "expectCount": 2,
-      "actualCount": 0,
-      "undocumentLines": [
-        5,
-        12
-      ]
-    },
-    "src/l3_organisms/event_list.js": {
-      "expectCount": 2,
-      "actualCount": 0,
-      "undocumentLines": [
-        3,
-        11
       ]
     },
     "src/l3_organisms/event_list.spec.js": {
