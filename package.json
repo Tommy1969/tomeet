@@ -19,7 +19,7 @@
     "coverage": "yarn test --coverage --watchAll=false",
     "lint": "eslint src",
     "doc": "esdoc",
-    "plato": "npx jsplato -r -n -e .eslintrc -t 'Static Analysis Report' -x '\\.(test|spec)\\.' -d report/plato src/**/**.js",
+    "plato": "npx jsplato -r -n -e .eslintrc -t 'Static Analysis Report' -x '\\.(test|spec)\\.' -d report/plato src/**/**.js*",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
