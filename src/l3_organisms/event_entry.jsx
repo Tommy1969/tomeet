@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import {LabeledText} from '../l2_ molecules/labeled_text'
-import {ButtonPalette} from '../l2_ molecules/button_palette'
+import {LabeledText} from '../l2_molecules/labeled_text'
+import {ButtonPalette} from '../l2_molecules/button_palette'
 
 const FieldSet = styled.fieldset`
   margin:                 1rem;
