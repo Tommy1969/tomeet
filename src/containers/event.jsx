@@ -17,13 +17,13 @@ export const EventContainer = props => {
   const [state, setState] = useRecoilState(eventState)
 
   const handle = {
-    change: e => {
+    handleChange: e => {
       setState({...state, [e.target.name]: e.target.value})
     },
-    mark: latlng => {
+    handleMark: latlng => {
       setState({...state, position: latlng})
     },
-    save: e => {
+    handleSave: e => {
       const events = [...state.events, {
         title:    state.title,
         place:    state.place,
@@ -35,14 +35,6 @@ export const EventContainer = props => {
   }
 
   return (
-    <EventPage
-      title         = {state.title}
-      place         = {state.place}
-      position      = {state.position}
-      events        = {state.events}
-      handleChange  = {handle.change}
-      handleSave    = {handle.save}
-      handleMark    = {handle.mark}
-    />
+    <EventPage {...state} {...handle} />
   )
 }
