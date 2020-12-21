@@ -8,6 +8,7 @@ const eventState = atom({
     title:    '',
     place:    '',
     position: [35.681236, 139.767125],
+    focus:    null,
     events:   Store.load([])
   },
   persistence_UNSTABLE: {type: 'log'}
@@ -31,6 +32,9 @@ export const EventContainer = props => {
       }]
       setState({...state, events: events})
       Store.save(events)
+    },
+    handleFocus: idx => {
+      setState({...state, focus: idx, ...state.events[idx]})
     }
   }
 

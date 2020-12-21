@@ -2,7 +2,7 @@ import {EventMap} from '../l3_organisms/event_map'
 import {EventEntry} from '../l3_organisms/event_entry'
 import {EventList} from '../l3_organisms/event_list'
 
-export const EventPage = ({id, title, place, position, events, handleMark, ...props}) =>
+export const EventPage = ({id, title, place, position, events, focus, handleMark, handleFocus, ...props}) =>
   <>
     <EventEntry
       id          = {id}
@@ -16,5 +16,7 @@ export const EventPage = ({id, title, place, position, events, handleMark, ...pr
       />
     <EventList
       events      = {events}
+      focus       = {focus}
+      handleFocus = {handleFocus}
       />
   </>
