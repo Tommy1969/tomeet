@@ -38,16 +38,21 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/l5_pages/event_page.spec.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {render, screen} from &apos;@testing-library/react&apos;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {RecoilRoot} from &quot;recoil&quot;
+import {render, screen} from &apos;@testing-library/react&apos;
 import {EventPage} from &apos;./event_page&apos;
 
 /** @test {EventPage} */
 describe(&apos;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30DA;&#x30FC;&#x30B8;&#x304C;&#x52D5;&#x4F5C;&#x3059;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
   beforeEach(() =&gt; {
-    render(&lt;EventPage
-      handleChange  = {()=&gt;{}}
-      handleSave    = {()=&gt;{}}
-      /&gt;)
+    render(
+      &lt;RecoilRoot&gt;
+        &lt;EventPage
+          handleChange  = {()=&gt;{}}
+          handleSave    = {()=&gt;{}}
+          /&gt;
+      &lt;/RecoilRoot&gt;
+    )
   })
   it(&apos;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x767B;&#x9332;&#x304C;&#x3042;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
     const target = screen.getByTestId(&apos;event_entry&apos;)

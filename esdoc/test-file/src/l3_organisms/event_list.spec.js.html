@@ -38,19 +38,22 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/l3_organisms/event_list.spec.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {render, screen} from &apos;@testing-library/react&apos;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {fireEvent, render, screen} from &apos;@testing-library/react&apos;
 import {EventList} from &apos;./event_list&apos;
 
 const dummy = [
   {title: &apos;&#x5FD8;&#x5E74;&#x4F1A;&apos;, place: &apos;&#x8EFD;&#x4E95;&#x6CA2;&apos;},
   {title: &apos;RSGT2021&apos;, place: &apos;&#x304A;&#x8336;&#x306E;&#x6C34;&#x30BD;&#x30E9;&#x30B7;&#x30C6;&#x30A3;&apos;}
 ]
+const mockFocus = jest.fn()
 
 /** @test {EventList} */
 describe(&apos;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x4E00;&#x89A7;&#x304C;&#x52D5;&#x4F5C;&#x3059;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
   beforeEach(() =&gt; {
+    mockFocus.mockClear()
     render(&lt;EventList
-      events = {dummy}
+      events      = {dummy}
+      handleFocus = {mockFocus}
       /&gt;)
   })
   it(&apos;&#x4E00;&#x3064;&#x76EE;&#x306E; title &#x304C;&#x3042;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
@@ -61,6 +64,12 @@ describe(&apos;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x4E00;&#x89A7;&#x304C;&#x52D5;&
     const target = screen.getByText(dummy[0].place)
     expect(target).toBeInTheDocument()
   })
+  it(&apos;&#x4E00;&#x3064;&#x76EE;&#x306E;&#x30AF;&#x30EA;&#x30C3;&#x30AF;&#x3067;&#x30D5;&#x30A9;&#x30FC;&#x30AB;&#x30B9;&#x304C;&#x5909;&#x308F;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
+    const target = screen.getByText(dummy[0].place)
+    fireEvent.click(target)
+    expect(mockFocus).toBeCalledTimes(1)
+    expect(mockFocus).toBeCalledWith(0)
+  })
   it(&apos;&#x4E8C;&#x3064;&#x76EE;&#x306E; title &#x304C;&#x3042;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
     const target = screen.getByText(dummy[1].title)
     expect(target).toBeInTheDocument()
@@ -68,6 +77,12 @@ describe(&apos;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x4E00;&#x89A7;&#x304C;&#x52D5;&
   it(&apos;&#x4E8C;&#x3064;&#x76EE;&#x306E; place &#x304C;&#x3042;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
     const target = screen.getByText(dummy[1].place)
     expect(target).toBeInTheDocument()
+  })
+  it(&apos;&#x4E8C;&#x3064;&#x76EE;&#x306E;&#x30AF;&#x30EA;&#x30C3;&#x30AF;&#x3067;&#x30D5;&#x30A9;&#x30FC;&#x30AB;&#x30B9;&#x304C;&#x5909;&#x308F;&#x308B;&#x3053;&#x3068;&apos;, () =&gt; {
+    const target = screen.getByText(dummy[1].place)
+    fireEvent.click(target)
+    expect(mockFocus).toBeCalledTimes(1)
+    expect(mockFocus).toBeCalledWith(1)
   })
 })
 </code></pre>

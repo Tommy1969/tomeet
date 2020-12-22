@@ -67,7 +67,12 @@ describe(&apos;&#x30A4;&#x30D9;&#x30F3;&#x30C8;&#x30B3;&#x30F3;&#x30C6;&#x30CA;&
     const target = screen.getByDisplayValue(&apos;&#x4FDD;&#x5B58;&apos;)
     expect(target).toBeInTheDocument()
     fireEvent.click(target)
-    expect(localStorage.getItem(&apos;event&apos;)).toEqual(&apos;[{&quot;title&quot;:&quot;&quot;,&quot;place&quot;:&quot;&quot;}]&apos;)
+    const exp = [{
+      title:    &apos;&apos;,
+      place:    &apos;&apos;,
+      position: [35.681236, 139.767125]  
+    }]
+    expect(localStorage.getItem(&apos;event&apos;)).toEqual(JSON.stringify(exp))
   })
 })
 </code></pre>

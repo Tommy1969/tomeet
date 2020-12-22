@@ -1,6 +1,6 @@
 {
   "coverage": "0%",
-  "expectCount": 8,
+  "expectCount": 10,
   "actualCount": 0,
   "files": {
     "src/App.js": {
@@ -11,10 +11,11 @@
       ]
     },
     "src/l3_organisms/event_list.spec.js": {
-      "expectCount": 1,
+      "expectCount": 2,
       "actualCount": 0,
       "undocumentLines": [
-        4
+        4,
+        8
       ]
     },
     "src/modules/store.js": {
@@ -33,6 +34,13 @@
         57,
         101,
         131
+      ]
+    },
+    "src/setupTests.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        10
       ]
     }
   }
