@@ -1,13 +1,18 @@
+import {RecoilRoot} from "recoil"
 import {render, screen} from '@testing-library/react'
 import {EventPage} from './event_page'
 
 /** @test {EventPage} */
 describe('イベントページが動作すること', () => {
   beforeEach(() => {
-    render(<EventPage
-      handleChange  = {()=>{}}
-      handleSave    = {()=>{}}
-      />)
+    render(
+      <RecoilRoot>
+        <EventPage
+          handleChange  = {()=>{}}
+          handleSave    = {()=>{}}
+          />
+      </RecoilRoot>
+    )
   })
   it('イベント登録があること', () => {
     const target = screen.getByTestId('event_entry')
