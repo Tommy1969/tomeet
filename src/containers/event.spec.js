@@ -27,6 +27,11 @@ describe('イベントコンテナが動作すること', () => {
     const target = screen.getByDisplayValue('保存')
     expect(target).toBeInTheDocument()
     fireEvent.click(target)
-    expect(localStorage.getItem('event')).toEqual('[{"title":"","place":""}]')
+    const exp = [{
+      title:    '',
+      place:    '',
+      position: [35.681236, 139.767125]  
+    }]
+    expect(localStorage.getItem('event')).toEqual(JSON.stringify(exp))
   })
 })

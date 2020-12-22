@@ -6,3 +6,10 @@ import '@testing-library/jest-dom/extend-expect'
 import {LocalStorage} from "node-localstorage"
 
 global.localStorage = new LocalStorage('./mock/localstorage')
+
+const mockGeolocation = {
+  getCurrentPosition: jest.fn(),
+  watchPosition: jest.fn()
+}
+
+global.navigator.geolocation = mockGeolocation
