@@ -1,5 +1,5 @@
-import {atom, useRecoilState} from 'recoil'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 import "leaflet/dist/leaflet.css"
 import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png'
 import iconUrl from 'leaflet/dist/images/marker-icon.png'
@@ -12,12 +12,6 @@ L.Icon.Default.mergeOptions({
   iconRetinaUrl: iconRetinaUrl,
   iconUrl: iconUrl,
   shadowUrl: shadowUrl
-})
-
-const positionState = atom({
-  key:        'positionState',
-  default:    [0, 0],
-  persistence_UNSTABLE: {type: 'log'}
 })
 
 const Div = styled.div`
@@ -35,15 +29,16 @@ function getMask() {
   return Math.random() * (max - min) + min;
 }
 
-export const EventMap = ({position, ...props}) => {
-  const [current, setCurrent] = useRecoilState(positionState)
-  navigator.geolocation.getCurrentPosition(pos => {
-    setCurrent([pos.coords.latitude + getMask(), pos.coords.longitude + getMask()])
-  })
+export const EventMap = ({position, current, ...props}) => {
+  if (props.handleCurrent) {
+    navigator.geolocation.getCurrentPosition(pos => {
+      props.handleCurrent && props.handleCurrent([pos.coords.latitude + getMask(), pos.coords.longitude + getMask()])
+    })
+  }
   function MyComponent() {
     useMapEvent('click', (e) => {
       const latlng = [e.latlng.lat, e.latlng.lng]
-      props.handleMark(latlng)
+      props.handleMark && props.handleMark(latlng)
     })
 
     return null
@@ -60,9 +55,22 @@ export const EventMap = ({position, ...props}) => {
         <Marker position={position}>
           <Popup>イベント開催地</Popup>
         </Marker>
-        <Marker position={current}>
-        </Marker>
+        {current &&
+          <Marker position={current}>
+          </Marker>
+        }
       </MapContainer>
     </Div>
   )
+}
+
+EventMap.defaultProps = {
+  position:       [35.681236, 139.767125]
+}
+
+EventMap.propTypes = {
+  position:       PropTypes.arrayOf(PropTypes.number),  // 開催地
+  current:        PropTypes.arrayOf(PropTypes.number),  // 現在地
+  handleMark:     PropTypes.func,
+  handleCurrent:  PropTypes.func
 }
