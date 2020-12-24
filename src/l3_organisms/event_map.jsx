@@ -29,7 +29,7 @@ function getMask() {
   return Math.random() * (max - min) + min;
 }
 
-export const EventMap = ({position, current, ...props}) => {
+export const EventMap = ({pos_place, pos_current, ...props}) => {
   if (props.handleCurrent) {
     navigator.geolocation.getCurrentPosition(pos => {
       props.handleCurrent && props.handleCurrent([pos.coords.latitude + getMask(), pos.coords.longitude + getMask()])
@@ -46,17 +46,17 @@ export const EventMap = ({position, current, ...props}) => {
 
   return (
     <Div>
-      <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+      <MapContainer center={pos_place} zoom={13} scrollWheelZoom={false}>
         <MyComponent />
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={position}>
+        <Marker position={pos_place}>
           <Popup>イベント開催地</Popup>
         </Marker>
-        {current &&
-          <Marker position={current}>
+        {pos_current &&
+          <Marker position={pos_current}>
           </Marker>
         }
       </MapContainer>
@@ -69,8 +69,8 @@ EventMap.defaultProps = {
 }
 
 EventMap.propTypes = {
-  position:       PropTypes.arrayOf(PropTypes.number),  // 開催地
-  current:        PropTypes.arrayOf(PropTypes.number),  // 現在地
+  pos_place:      PropTypes.arrayOf(PropTypes.number),  // 開催地
+  pos_current:    PropTypes.arrayOf(PropTypes.number),  // 現在地
   handleMark:     PropTypes.func,
   handleCurrent:  PropTypes.func
 }

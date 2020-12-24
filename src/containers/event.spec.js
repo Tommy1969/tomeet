@@ -28,9 +28,9 @@ describe('イベントコンテナが動作すること', () => {
     expect(target).toBeInTheDocument()
     fireEvent.click(target)
     const exp = [{
-      title:    '',
-      place:    '',
-      position: [35.681236, 139.767125]  
+      title:      '',
+      place:      '',
+      pos_place:  [35.681236, 139.767125]  
     }]
     expect(localStorage.getItem('event')).toEqual(JSON.stringify(exp))
   })
